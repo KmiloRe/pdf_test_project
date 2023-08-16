@@ -5,6 +5,7 @@ import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:flutter/material.dart';
 import 'package:printing/printing.dart';
+import 'dart:math';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -14,6 +15,95 @@ class MyHomePage extends StatefulWidget {
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
+
+//Datos para hacer graficos
+const tableHeaders = ['Category', 'Budget', 'Expense', 'Result'];
+
+const dataTable = [
+  ['Phone', 80, 95],
+  ['Internet', 250, 230],
+  ['Electricity', 300, 375],
+  ['Movies', 85, 80],
+  ['Food', 300, 350],
+  ['Fuel', 650, 550],
+  ['Insurance', 250, 310],
+];
+
+// Some summary maths
+final budget = dataTable
+    .map((e) => e[1] as num)
+    .reduce((value, element) => value + element);
+final expense = dataTable
+    .map((e) => e[2] as num)
+    .reduce((value, element) => value + element);
+
+const baseColor = PdfColors.cyan;
+
+// Top bar chart
+final chart1 = pw.Chart(
+  left: pw.Container(
+    alignment: pw.Alignment.topCenter,
+    margin: const pw.EdgeInsets.only(right: 5, top: 10),
+    child: pw.Transform.rotateBox(
+      angle: pi / 2,
+      child: pw.Text('Amount'),
+    ),
+  ),
+  overlay: pw.ChartLegend(
+    position: const pw.Alignment(-.7, 1),
+    decoration: pw.BoxDecoration(
+      color: PdfColors.white,
+      border: pw.Border.all(
+        color: PdfColors.black,
+        width: .5,
+      ),
+    ),
+  ),
+  grid: pw.CartesianGrid(
+    xAxis: pw.FixedAxis.fromStrings(
+      List<String>.generate(
+          dataTable.length, (index) => dataTable[index][0] as String),
+      marginStart: 30,
+      marginEnd: 30,
+      ticks: true,
+    ),
+    yAxis: pw.FixedAxis(
+      [0, 100, 200, 300, 400, 500, 600, 700],
+      format: (v) => '\$$v',
+      divisions: true,
+    ),
+  ),
+  datasets: [
+    pw.BarDataSet(
+      color: PdfColors.blue100,
+      legend: tableHeaders[2],
+      width: 15,
+      offset: -10,
+      borderColor: baseColor,
+      data: List<pw.PointChartValue>.generate(
+        dataTable.length,
+        (i) {
+          final v = dataTable[i][2] as num;
+          return pw.PointChartValue(i.toDouble(), v.toDouble());
+        },
+      ),
+    ),
+    pw.BarDataSet(
+      color: PdfColors.amber100,
+      legend: tableHeaders[1],
+      width: 15,
+      offset: 10,
+      borderColor: PdfColors.amber,
+      data: List<pw.PointChartValue>.generate(
+        dataTable.length,
+        (i) {
+          final v = dataTable[i][1] as num;
+          return pw.PointChartValue(i.toDouble(), v.toDouble());
+        },
+      ),
+    ),
+  ],
+);
 
 class _MyHomePageState extends State<MyHomePage> {
   final pdf = pw.Document();
@@ -296,6 +386,74 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 30,
                 child: pw.FlutterLogo(),
               ), */
+            ],
+          );
+        },
+      ),
+    );
+    pdf.addPage(
+      pw.Page(
+        pageFormat: format,
+        //theme: theme,
+        build: (context) {
+          // Page layout
+          return pw.Column(
+            children: [
+              pw.Text('Budget Report',
+                  style: const pw.TextStyle(
+                    color: baseColor,
+                    fontSize: 40,
+                  )),
+              pw.Divider(thickness: 4),
+              pw.Expanded(flex: 3, child: chart1),
+              pw.Divider(),
+              //pw.Expanded(flex: 2, child: chart2),
+              pw.SizedBox(height: 10),
+              pw.Row(
+                crossAxisAlignment: pw.CrossAxisAlignment.start,
+                children: [
+                  pw.Expanded(
+                      child: pw.Column(children: [
+                    pw.Container(
+                      alignment: pw.Alignment.centerLeft,
+                      padding: const pw.EdgeInsets.only(bottom: 10),
+                      child: pw.Text(
+                        'Expense By Sub-Categories',
+                        style: const pw.TextStyle(
+                          color: baseColor,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ),
+                    pw.Text(
+                      'Total expenses are broken into different categories for closer look into where the money was spent.',
+                      textAlign: pw.TextAlign.justify,
+                    )
+                  ])),
+                  pw.SizedBox(width: 10),
+                  pw.Expanded(
+                    child: pw.Column(
+                      children: [
+                        pw.Container(
+                          alignment: pw.Alignment.centerLeft,
+                          padding: const pw.EdgeInsets.only(bottom: 10),
+                          child: pw.Text(
+                            'Spent vs. Saved',
+                            style: const pw.TextStyle(
+                              color: baseColor,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                        pw.Text(
+                          'Budget was originally \$$budget. A total of \$$expense was spent on the month of January which exceeded the overall budget by \$${expense - budget}',
+                          textAlign: pw.TextAlign.justify,
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ],
           );
         },
