@@ -17,16 +17,22 @@ class MyHomePage extends StatefulWidget {
 }
 
 //Datos para hacer graficos
-const tableHeaders = ['Category', 'Budget', 'Expense', 'Result'];
+const tableHeaders = [
+  'Mes',
+  'Cucaracha alemana',
+  'Mosquitos dengue',
+  'Result',
+  'Roedor'
+];
 
 const dataTable = [
-  ['Phone', 80, 95],
-  ['Internet', 250, 230],
-  ['Electricity', 300, 375],
-  ['Movies', 85, 80],
-  ['Food', 300, 350],
-  ['Fuel', 650, 550],
-  ['Insurance', 250, 310],
+  ['Enero', 30, 35, 22],
+  ['Febrero', 5, 10, 0],
+  ['Marzo', 3, 5, 2],
+  ['Abril', 10, 2, 1],
+  ['Mayo', 0, 4, 0],
+  ['Junio', 0, 0, 1],
+  // ['Insurance', 250, 310],
 ];
 
 // Some summary maths
@@ -39,14 +45,14 @@ final expense = dataTable
 
 const baseColor = PdfColors.cyan;
 
-// Top bar chart
+// Codigo para bar chart
 final chart1 = pw.Chart(
   left: pw.Container(
     alignment: pw.Alignment.topCenter,
     margin: const pw.EdgeInsets.only(right: 5, top: 10),
     child: pw.Transform.rotateBox(
       angle: pi / 2,
-      child: pw.Text('Amount'),
+      child: pw.Text('Cantidad'),
     ),
   ),
   overlay: pw.ChartLegend(
@@ -64,21 +70,22 @@ final chart1 = pw.Chart(
       List<String>.generate(
           dataTable.length, (index) => dataTable[index][0] as String),
       marginStart: 30,
-      marginEnd: 30,
-      ticks: true,
+      marginEnd: 35,
+      ticks: false, //palitos de x al titulo del mes
     ),
     yAxis: pw.FixedAxis(
-      [0, 100, 200, 300, 400, 500, 600, 700],
-      format: (v) => '\$$v',
+      [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50],
+      format: (v) => '\*$v',
       divisions: true,
     ),
   ),
+  //ubicación de cada barra de datos
   datasets: [
     pw.BarDataSet(
       color: PdfColors.blue100,
       legend: tableHeaders[2],
       width: 15,
-      offset: -10,
+      offset: -15,
       borderColor: baseColor,
       data: List<pw.PointChartValue>.generate(
         dataTable.length,
@@ -92,7 +99,7 @@ final chart1 = pw.Chart(
       color: PdfColors.amber100,
       legend: tableHeaders[1],
       width: 15,
-      offset: 10,
+      offset: 5,
       borderColor: PdfColors.amber,
       data: List<pw.PointChartValue>.generate(
         dataTable.length,
@@ -102,7 +109,54 @@ final chart1 = pw.Chart(
         },
       ),
     ),
+    pw.BarDataSet(
+      color: PdfColors.purple100,
+      legend: tableHeaders[4],
+      width: 15,
+      offset: 25,
+      borderColor: PdfColors.purpleAccent,
+      data: List<pw.PointChartValue>.generate(
+        dataTable.length,
+        (i) {
+          final v = dataTable[i][3] as num;
+          return pw.PointChartValue(i.toDouble(), v.toDouble());
+        },
+      ),
+    ),
   ],
+);
+
+//Tabla del final
+// Data table
+final table = pw.TableHelper.fromTextArray(
+  border: null,
+  headers: tableHeaders,
+  data: List<List<dynamic>>.generate(
+    dataTable.length,
+    (index) => <dynamic>[
+      dataTable[index][0],
+      dataTable[index][1],
+      dataTable[index][2],
+      (dataTable[index][1] as num) - (dataTable[index][2] as num),
+    ],
+  ),
+  headerStyle: pw.TextStyle(
+    color: PdfColors.white,
+    fontWeight: pw.FontWeight.bold,
+  ),
+  headerDecoration: const pw.BoxDecoration(
+    color: baseColor,
+  ),
+  rowDecoration: const pw.BoxDecoration(
+    border: pw.Border(
+      bottom: pw.BorderSide(
+        color: baseColor,
+        width: .5,
+      ),
+    ),
+  ),
+  cellAlignment: pw.Alignment.centerRight,
+  cellAlignments: {0: pw.Alignment.centerLeft},
 );
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -125,6 +179,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        centerTitle: true,
         title: Text(widget.title),
       ),
       body: PdfPreview(
@@ -133,7 +188,17 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  pw.Widget _getTitlte(String certifType, pw.Font font) => pw.Text(
+  pw.Widget _getTitle(String certifType, pw.Font font) => pw.Text(
+        '$certifType',
+        textAlign: pw.TextAlign.center,
+        style: pw.TextStyle(
+          font: font,
+          fontSize: 32,
+          color: PdfColor.fromHex('53726A'),
+        ),
+      );
+  //
+  pw.Widget _getCertificadotitle(String certifType, pw.Font font) => pw.Text(
         'Certificado de $certifType',
         textAlign: pw.TextAlign.center,
         style: pw.TextStyle(
@@ -150,6 +215,15 @@ class _MyHomePageState extends State<MyHomePage> {
           font: font,
           fontSize: 22,
           color: PdfColor.fromHex('53726A'),
+        ),
+      );
+
+  pw.Text _getSmallBlackText(String text, pw.Font font) => pw.Text(
+        text,
+        style: pw.TextStyle(
+          font: font,
+          fontSize: 8,
+          color: PdfColors.black,
         ),
       );
 
@@ -197,7 +271,7 @@ class _MyHomePageState extends State<MyHomePage> {
           return pw.Column(
             crossAxisAlignment: pw.CrossAxisAlignment.start,
             children: [
-              _getTitlte('manejo integral de plagas', capriolaReg),
+              _getCertificadotitle('manejo integral de plagas', capriolaReg),
               pw.SizedBox(height: 20),
               pw.Center(child: _getSubtitle('Resumen', capriolaReg)),
               pw.Center(
@@ -214,6 +288,8 @@ class _MyHomePageState extends State<MyHomePage> {
               pw.SizedBox(
                 height: 150,
                 child: pw.Row(
+                  //Este row completo ha de ser reutilizado
+                  //en los otros certificados
                   mainAxisAlignment: pw.MainAxisAlignment.spaceEvenly,
                   children: [
                     pw.Column(
@@ -399,14 +475,21 @@ class _MyHomePageState extends State<MyHomePage> {
           // Page layout
           return pw.Column(
             children: [
-              pw.Text('Budget Report',
-                  style: const pw.TextStyle(
-                    color: baseColor,
-                    fontSize: 40,
-                  )),
-              pw.Divider(thickness: 4),
+              pw.Center(child: _getTitle('Historico de plagas', capriolaReg)),
+              pw.Center(
+                  child: _getSmallBlackText('Ultimos 6 Meses', capriolaReg)),
+              pw.Divider(thickness: 4, color: PdfColors.grey),
               pw.Expanded(flex: 3, child: chart1),
               pw.Divider(),
+              pw.Center(child: _getSubtitle('Resumen', capriolaReg)),
+              pw.Center(child: _getSubtitle('Resumen', capriolaReg)),
+              pw.Center(child: _getSubtitle('Resumen', capriolaReg)),
+              pw.Center(child: _getSubtitle('Resumen', capriolaReg)),
+              pw.Center(child: _getSubtitle('Resumen', capriolaReg)),
+              pw.Center(child: _getSubtitle('Resumen', capriolaReg)),
+              pw.Center(child: _getSubtitle('Resumen', capriolaReg)),
+              pw.Center(child: _getSubtitle('Resumen', capriolaReg)),
+              pw.Center(child: _getSubtitle('Resumen', capriolaReg)),
               //pw.Expanded(flex: 2, child: chart2),
               pw.SizedBox(height: 10),
               pw.Row(
@@ -460,11 +543,60 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
 
+    pdf.addPage(
+      pw.Page(
+        pageFormat: format,
+        //theme: theme,
+        build: (context) {
+          const chartColors = [
+            PdfColors.blue300,
+            PdfColors.green300,
+            PdfColors.amber300,
+            PdfColors.pink300,
+            PdfColors.cyan300,
+            PdfColors.purple300,
+            PdfColors.lime300,
+          ];
+
+          return pw.Column(
+            children: [
+              pw.Flexible(
+                child: pw.Chart(
+                  title: pw.Text(
+                    'Expense breakdown',
+                    style: const pw.TextStyle(
+                      color: baseColor,
+                      fontSize: 20,
+                    ),
+                  ),
+                  grid: pw.PieGrid(),
+                  datasets:
+                      List<pw.Dataset>.generate(dataTable.length, (index) {
+                    final data = dataTable[index];
+                    final color = chartColors[index % chartColors.length];
+                    final value = (data[2] as num).toDouble();
+                    final pct = (value / expense * 100).round();
+                    return pw.PieDataSet(
+                      legend: '${data[0]}\n$pct%',
+                      value: value,
+                      color: color,
+                      legendStyle: const pw.TextStyle(fontSize: 10),
+                    );
+                  }),
+                ),
+              ),
+              table,
+            ],
+          );
+        },
+      ),
+    );
+
     return pdf.save();
   }
 }
 
-  /* List<String> products = [
+/* List<String> products = [
       'ROdeores',
       'Item 1',
       'otro item',
