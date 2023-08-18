@@ -85,7 +85,7 @@ final chart1 = pw.Chart(
       ticks: false, //palitos de x al titulo del mes
     ),
     yAxis: pw.FixedAxis(
-      [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60],
+      [0, 5, 10, 15, 20, 25, 30, 35, 40, 45],
       format: (v) => '\*$v',
       divisions: true,
       divisionsDashed: true,
@@ -222,6 +222,16 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+  pw.Text _getMinortitle(String x, pw.Font font) => pw.Text(
+        x,
+        textAlign: pw.TextAlign.left,
+        style: pw.TextStyle(
+          font: font,
+          fontSize: 12,
+          color: PdfColor.fromHex('53726A'),
+        ),
+      );
+
   pw.Widget _getTitle(String certifType, pw.Font font) => pw.Text(
         '$certifType',
         textAlign: pw.TextAlign.center,
@@ -261,6 +271,96 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       );
 
+  //Metodos quemados
+
+  pw.SizedBox _getTableItemroedores(
+    String title,
+    pw.Font titleFont,
+    pw.Font contentFont,
+  ) =>
+      pw.SizedBox(
+        width: 200,
+        child: pw.Row(
+          mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: pw.CrossAxisAlignment.center,
+          children: [
+            pw.Text(
+              title,
+              style: pw.TextStyle(
+                font: titleFont,
+                // fontWeight: FontWeight.bold,
+                fontSize: 10,
+                color: PdfColors.black,
+              ),
+            ),
+            pw.Text(
+              '     Sin evidencia:  0',
+              style: pw.TextStyle(
+                font: contentFont,
+                fontSize: 8,
+                color: PdfColors.grey,
+              ),
+            ),
+            pw.Text(
+              '     Bajo: 1 a 5',
+              style: pw.TextStyle(
+                font: contentFont,
+                fontSize: 8,
+                color: PdfColors.grey,
+              ),
+            ),
+            pw.Text(
+              '     Medio: 5 a 10 ',
+              style: pw.TextStyle(
+                font: contentFont,
+                fontSize: 8,
+                color: PdfColors.grey,
+              ),
+            ),
+            pw.Text(
+              '     Alto: 11 en adelante',
+              style: pw.TextStyle(
+                font: contentFont,
+                fontSize: 8,
+                color: PdfColors.grey,
+              ),
+            )
+          ],
+        ),
+      );
+
+  pw.SizedBox _getQuimico(
+    String producto,
+    String docificacion,
+    pw.Font titleFont,
+    pw.Font contentFont,
+  ) =>
+      pw.SizedBox(
+        width: 200,
+        child: pw.Row(
+          mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: pw.CrossAxisAlignment.center,
+          children: [
+            pw.Text(
+              producto,
+              style: pw.TextStyle(
+                font: titleFont,
+                fontSize: 10,
+                color: PdfColors.grey,
+              ),
+            ),
+            pw.Text(
+              docificacion,
+              style: pw.TextStyle(
+                font: contentFont,
+                fontSize: 10,
+                color: PdfColors.grey,
+              ),
+            )
+          ],
+        ),
+      );
+
   pw.SizedBox _getTableItem(
     String title,
     String content,
@@ -297,6 +397,308 @@ class _MyHomePageState extends State<MyHomePage> {
     final pdf = pw.Document(version: PdfVersion.pdf_1_5, compress: true);
     final pw.Font capriolaReg = await PdfGoogleFonts.capriolaRegular();
     final pw.Font canterllReg = await PdfGoogleFonts.cantarellRegular();
+
+    pdf.addPage(
+      pw.Page(
+        pageFormat: format,
+        build: (context) {
+          return pw.Column(
+            crossAxisAlignment: pw.CrossAxisAlignment.start,
+            children: [
+              _getCertificadotitle('manejo integral de plagas', capriolaReg),
+              pw.SizedBox(height: 20),
+              pw.Center(
+                child: pw.Text(
+                  'Visita durante el año en curso número 7',
+                  style: pw.TextStyle(
+                    font: capriolaReg,
+                    fontSize: 8,
+                    color: PdfColors.black,
+                  ),
+                ),
+              ),
+              pw.SizedBox(height: 20),
+              pw.SizedBox(
+                height: 150,
+                child: pw.Row(
+                  //Este row completo ha de ser reutilizado
+                  //en los otros certificados
+                  mainAxisAlignment: pw.MainAxisAlignment.spaceEvenly,
+                  children: [
+                    pw.Column(
+                      mainAxisAlignment: pw.MainAxisAlignment.spaceEvenly,
+                      children: [
+                        _getTableItem(
+                          'Fecha',
+                          '23 de agosto de 2023',
+                          canterllReg,
+                          capriolaReg,
+                        ),
+                        _getTableItem(
+                          'Hora de inicio',
+                          '9:30am',
+                          canterllReg,
+                          capriolaReg,
+                        ),
+                        _getTableItem(
+                          'Hora final',
+                          '11:30am',
+                          canterllReg,
+                          capriolaReg,
+                        ),
+                        _getTableItem(
+                          'Duración',
+                          '2 horas',
+                          canterllReg,
+                          capriolaReg,
+                        ),
+                      ],
+                    ),
+                    pw.Column(
+                      mainAxisAlignment: pw.MainAxisAlignment.spaceEvenly,
+                      children: [
+                        _getTableItem(
+                          'Ciente',
+                          'Pollos Frisby',
+                          canterllReg,
+                          capriolaReg,
+                        ),
+                        _getTableItem(
+                          'Teléfono',
+                          '3203994060',
+                          canterllReg,
+                          capriolaReg,
+                        ),
+                        _getTableItem(
+                          'Email',
+                          'firisberto@frisby.com',
+                          canterllReg,
+                          capriolaReg,
+                        ),
+                        _getTableItem(
+                          'Dirección',
+                          'Calle 35 #23-45',
+                          canterllReg,
+                          capriolaReg,
+                        ),
+                        _getTableItem(
+                          'Municipio',
+                          '23 de agosto de 2023',
+                          canterllReg,
+                          capriolaReg,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              pw.SizedBox(height: 20),
+              pw.Text(
+                'Observaciones generales',
+                textAlign: pw.TextAlign.left,
+                style: pw.TextStyle(
+                  font: capriolaReg,
+                  fontSize: 12,
+                  color: PdfColor.fromHex('53726A'),
+                ),
+              ),
+              pw.SizedBox(height: 8),
+              pw.Text(
+                'Se realiza el control integrado de plagas en las instalaciones en general; inspección y verificación, bajo métodos de aplicación de  productos químicos y no químicos, para el control de plagas, en las áreas de producción, almacenamiento, oficinas, baños, comedores, zonas verdes, etc.',
+                style: pw.TextStyle(
+                  font: canterllReg,
+                  fontSize: 10,
+                  color: PdfColors.grey700,
+                ),
+              ),
+              pw.SizedBox(height: 20),
+              pw.Text(
+                'Convención de grados de infestación',
+                textAlign: pw.TextAlign.left,
+                style: pw.TextStyle(
+                  font: capriolaReg,
+                  fontSize: 12,
+                  color: PdfColor.fromHex('53726A'),
+                ),
+              ),
+              pw.SizedBox(height: 20),
+              pw.SizedBox(
+                height: 20,
+                child: pw.Row(
+                  //Este row completo ha de ser reutilizado
+                  //en los otros certificados
+                  mainAxisAlignment: pw.MainAxisAlignment.start,
+                  children: [
+                    _getTableItemroedores(
+                      '                  Insectos rastreros ',
+                      canterllReg,
+                      capriolaReg,
+                    ),
+                  ],
+                ),
+              ),
+              pw.SizedBox(
+                height: 20,
+                child: pw.Row(
+                  //Este row completo ha de ser reutilizado
+                  //en los otros certificados
+                  mainAxisAlignment: pw.MainAxisAlignment.start,
+                  children: [
+                    _getTableItemroedores(
+                      '                  Insectos voladores',
+                      canterllReg,
+                      capriolaReg,
+                    ),
+                  ],
+                ),
+              ),
+              pw.SizedBox(
+                height: 20,
+                child: pw.Row(
+                  //Este row completo ha de ser reutilizado
+                  //en los otros certificados
+                  mainAxisAlignment: pw.MainAxisAlignment.start,
+                  children: [
+                    _getTableItemroedores(
+                      '                  Roedores                ',
+                      canterllReg,
+                      capriolaReg,
+                    ),
+                  ],
+                ),
+              ),
+
+              //QUIMICOS
+              pw.SizedBox(height: 20),
+              pw.Text(
+                'Productos y/o químicos aplicados ó instalados',
+                textAlign: pw.TextAlign.left,
+                style: pw.TextStyle(
+                  font: capriolaReg,
+                  fontSize: 12,
+                  color: PdfColor.fromHex('53726A'),
+                ),
+              ),
+              pw.SizedBox(height: 20),
+              pw.SizedBox(
+                height: 25,
+                child: pw.Row(
+                  //Este row completo ha de ser reutilizado
+                  //en los otros certificados
+                  mainAxisAlignment: pw.MainAxisAlignment.start,
+                  children: [
+                    _getQuimico(
+                      '                                             Producto',
+                      '                                          Doscificacion',
+                      capriolaReg,
+                      capriolaReg,
+                    ),
+                  ],
+                ),
+              ),
+              pw.SizedBox(
+                height: 25,
+                child: pw.Row(
+                  //Este row completo ha de ser reutilizado
+                  //en los otros certificados
+                  mainAxisAlignment: pw.MainAxisAlignment.start,
+                  children: [
+                    _getQuimico(
+                      '                                      Tenopa S.C',
+                      '                                  1 gr por 5 punto de aplicación',
+                      canterllReg,
+                      canterllReg,
+                    ),
+                  ],
+                ),
+              ),
+              pw.SizedBox(
+                height: 25,
+                child: pw.Row(
+                  //Este row completo ha de ser reutilizado
+                  //en los otros certificados
+                  mainAxisAlignment: pw.MainAxisAlignment.start,
+                  children: [
+                    _getQuimico(
+                      '                                      Murder S.C',
+                      '                                  1 gr por 5 punto de aplicación',
+                      canterllReg,
+                      canterllReg,
+                    ),
+                  ],
+                ),
+              ),
+              //lo ultimo
+              pw.SizedBox(height: 1),
+              //TODO (any): Buscar forma de poner esto como un footer fijo que se agregue siempre al final de la página
+              pw.Row(
+                mainAxisAlignment: pw.MainAxisAlignment.spaceEvenly,
+                children: [
+                  pw.Column(
+                    crossAxisAlignment: pw.CrossAxisAlignment.center,
+                    children: [
+                      pw.Text(
+                        'Verificador/a',
+                        style: pw.TextStyle(
+                          font: capriolaReg,
+                          fontSize: 12,
+                          color: PdfColor.fromHex('53726A'),
+                        ),
+                      ),
+                      pw.SizedBox(height: 22),
+                      pw.Text(
+                        'Carolina Marín',
+                        style: pw.TextStyle(
+                          font: capriolaReg,
+                          fontSize: 12,
+                          color: PdfColors.grey,
+                        ),
+                      ),
+                      pw.Text(
+                        'Auxiliar de cocina',
+                        style: pw.TextStyle(
+                          font: canterllReg,
+                          fontSize: 8,
+                          color: PdfColors.grey,
+                        ),
+                      ),
+                    ],
+                  ),
+                  pw.Column(
+                    crossAxisAlignment: pw.CrossAxisAlignment.start,
+                    children: [
+                      pw.Text(
+                        'Carlos Alberto Echavarría A.',
+                        style: pw.TextStyle(
+                          font: capriolaReg,
+                          fontSize: 12,
+                          fontWeight: pw.FontWeight.normal,
+                          color: PdfColors.black,
+                        ),
+                      ),
+                      //TODO (camilo, sebas): agregar firma (SVG)
+                      pw.Text(
+                        'Gerente',
+                        style: pw.TextStyle(
+                          font: capriolaReg,
+                          fontSize: 12,
+                          fontWeight: pw.FontWeight.bold,
+                          color: PdfColors.black,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              /*  pw.SizedBox(
+                height: 30,
+                child: pw.FlutterLogo(),
+              ), */
+            ],
+          );
+        },
+      ),
+    );
 
     pdf.addPage(
       pw.Page(
@@ -509,14 +911,22 @@ class _MyHomePageState extends State<MyHomePage> {
           // Page layout
           return pw.Column(
             children: [
-              pw.Center(child: _getTitle('Historico de plagas', capriolaReg)),
+              pw.Center(child: _getTitle('Tendencias', capriolaReg)),
+              pw.Divider(thickness: 4, color: PdfColors.grey),
+              pw.SizedBox(height: 20),
+              pw.Center(
+                  child: _getSubtitle('Historico de plagas', capriolaReg)),
               pw.Center(
                   child: _getSmallBlackText('Ultimos 6 Meses', capriolaReg)),
-              pw.Divider(thickness: 4, color: PdfColors.grey),
+              pw.SizedBox(height: 20),
+
               pw.Expanded(flex: 3, child: chart1),
+
               pw.Divider(),
+              pw.SizedBox(height: 20),
               pw.Center(
                   child: _getSubtitle('Tendencia de plagas', capriolaReg)),
+              pw.SizedBox(height: 20),
               table,
               //pw.Expanded(flex: 2, child: chart2),
               pw.SizedBox(height: 30),
