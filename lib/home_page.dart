@@ -289,6 +289,34 @@ final table3 = pw.TableHelper.fromTextArray(
   cellAlignments: {0: pw.Alignment.centerLeft},
 );
 
+// Left curved line chart
+final chart2 = pw.Chart(
+  right: pw.ChartLegend(),
+  grid: pw.CartesianGrid(
+    xAxis: pw.FixedAxis([0, 1, 2, 3, 4, 5, 6]),
+    yAxis: pw.FixedAxis(
+      [0, 10, 20, 30, 40, 50],
+      divisions: true,
+    ),
+  ),
+  datasets: [
+    pw.LineDataSet(
+      legend: 'Expense',
+      drawSurface: true,
+      isCurved: true,
+      drawPoints: false,
+      color: baseColor,
+      data: List<pw.PointChartValue>.generate(
+        dataTable.length,
+        (i) {
+          final v = dataTable[i][2] as num;
+          return pw.PointChartValue(i.toDouble(), v.toDouble());
+        },
+      ),
+    ),
+  ],
+);
+
 class _MyHomePageState extends State<MyHomePage> {
   final pdf = pw.Document();
   late String paragraph;
@@ -670,21 +698,21 @@ class _MyHomePageState extends State<MyHomePage> {
               pw.SizedBox(height: 30),
               table2,
               pw.SizedBox(height: 40),
-              pw.Container(
-                decoration: pw.BoxDecoration(
-                  color: secondColor,
-                ),
-                child: pw.Column(children: [
-                  pw.Row(),
-                  pw.Row(children: [
-                    pw.Center(
-                        child: _getSmallBlackText(
-                            'mundocontrolexpertos@gmail.com', capriolaReg)),
-                  ]),
-                  pw.Divider(thickness: 4, color: PdfColors.white),
-                  pw.Row(),
-                ]),
-              ),
+              // pw.Container(
+              //   decoration: pw.BoxDecoration(
+              //     color: secondColor,
+              //   ),
+              //   child: pw.Column(children: [
+              //     pw.Row(),
+              //     pw.Row(children: [
+              //       pw.Center(
+              //           child: _getSmallBlackText(
+              //               'mundocontrolexpertos@gmail.com', capriolaReg)),
+              //     ]),
+              //     pw.Divider(thickness: 4, color: PdfColors.white),
+              //     pw.Row(),
+              //   ]),
+              // ),
               /*  pw.SizedBox(
                 height: 30,
                 child: pw.FlutterLogo(),
@@ -783,8 +811,28 @@ class _MyHomePageState extends State<MyHomePage> {
                   ],
                 ),
               ),
+              pw.SizedBox(height: 20),
+              pw.Text(
+                'Recomendaciones',
+                textAlign: pw.TextAlign.left,
+                style: pw.TextStyle(
+                  font: capriolaReg,
+                  fontSize: 12,
+                  color: PdfColor.fromHex('53726A'),
+                ),
+              ),
+              pw.SizedBox(height: 20),
+              pw.Text(
+                paragraph,
+                textAlign: pw.TextAlign.left,
+                style: pw.TextStyle(
+                  font: canterllReg,
+                  fontSize: 10,
+                  color: PdfColors.grey700,
+                ),
+              ),
               //lo ultimo
-              pw.SizedBox(height: 1),
+              pw.SizedBox(height: 250),
               //TODO (any): Buscar forma de poner esto como un footer fijo que se agregue siempre al final de la página
               pw.Row(
                 mainAxisAlignment: pw.MainAxisAlignment.spaceEvenly,
@@ -970,6 +1018,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   }),
                 ),
               ),
+              //chart2,
               table,
             ],
           );
