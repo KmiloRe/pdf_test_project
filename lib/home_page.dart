@@ -6,6 +6,7 @@ import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:flutter/material.dart';
 import 'package:pdf_test_project/util/data.dart';
+import 'package:pdf_test_project/util/recomendaciones.dart';
 import 'package:printing/printing.dart';
 import 'dart:math';
 import 'dart:typed_data';
@@ -290,9 +291,11 @@ final table3 = pw.TableHelper.fromTextArray(
 
 class _MyHomePageState extends State<MyHomePage> {
   final pdf = pw.Document();
+  late String paragraph;
 
   @override
   void initState() {
+    paragraph = getParagraphFromMap(ourMap);
     super.initState();
   }
 
