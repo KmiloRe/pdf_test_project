@@ -22,16 +22,24 @@ const tableHeaders = [
   'Cucaracha alemana',
   'Mosquitos dengue',
   'Result',
-  'Roedor'
+  'Roedor',
+];
+
+const tableHeaders2 = [
+  'Mes',
+  'Cucarachas',
+  'Moscas',
+  'Roedores',
+  'Otras plagas'
 ];
 
 const dataTable = [
-  ['Enero', 30, 35, 22],
-  ['Febrero', 5, 10, 0],
-  ['Marzo', 3, 5, 2],
-  ['Abril', 10, 2, 1],
-  ['Mayo', 0, 4, 0],
-  ['Junio', 0, 0, 1],
+  ['Enero', 30, 35, 22, 12],
+  ['Febrero', 5, 10, 0, 3],
+  ['Marzo', 3, 5, 2, 1],
+  ['Abril', 10, 2, 1, 1],
+  ['Mayo', 0, 4, 0, 0],
+  ['Junio', 0, 0, 1, 1],
   // ['Insurance', 250, 310],
 ];
 
@@ -74,17 +82,17 @@ final chart1 = pw.Chart(
       ticks: false, //palitos de x al titulo del mes
     ),
     yAxis: pw.FixedAxis(
-      [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50],
+      [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60],
       format: (v) => '\*$v',
-      divisions: true,
+      divisions: false,
     ),
   ),
   //ubicación de cada barra de datos
   datasets: [
     pw.BarDataSet(
       color: PdfColors.blue100,
-      legend: tableHeaders[2],
-      width: 15,
+      legend: tableHeaders2[2],
+      width: 7,
       offset: -15,
       borderColor: baseColor,
       data: List<pw.PointChartValue>.generate(
@@ -97,9 +105,9 @@ final chart1 = pw.Chart(
     ),
     pw.BarDataSet(
       color: PdfColors.amber100,
-      legend: tableHeaders[1],
-      width: 15,
-      offset: 5,
+      legend: tableHeaders2[1],
+      width: 7,
+      offset: -4,
       borderColor: PdfColors.amber,
       data: List<pw.PointChartValue>.generate(
         dataTable.length,
@@ -111,14 +119,28 @@ final chart1 = pw.Chart(
     ),
     pw.BarDataSet(
       color: PdfColors.purple100,
-      legend: tableHeaders[4],
-      width: 15,
-      offset: 25,
+      legend: tableHeaders2[3],
+      width: 7,
+      offset: 7,
       borderColor: PdfColors.purpleAccent,
       data: List<pw.PointChartValue>.generate(
         dataTable.length,
         (i) {
           final v = dataTable[i][3] as num;
+          return pw.PointChartValue(i.toDouble(), v.toDouble());
+        },
+      ),
+    ),
+    pw.BarDataSet(
+      color: PdfColors.green,
+      legend: tableHeaders2[4],
+      width: 7,
+      offset: 18,
+      borderColor: PdfColors.greenAccent,
+      data: List<pw.PointChartValue>.generate(
+        dataTable.length,
+        (i) {
+          final v = dataTable[i][4] as num;
           return pw.PointChartValue(i.toDouble(), v.toDouble());
         },
       ),
