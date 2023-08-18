@@ -4,6 +4,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:flutter/material.dart';
+import 'package:pdf_test_project/util/data.dart';
 import 'package:printing/printing.dart';
 import 'dart:math';
 
@@ -64,8 +65,9 @@ final chart1 = pw.Chart(
       child: pw.Text('Cantidad'),
     ),
   ),
-  overlay: pw.ChartLegend(
-    position: const pw.Alignment(-.7, 1),
+  title: pw.ChartLegend(
+    direction: pw.Axis.horizontal,
+    position: const pw.Alignment(0, 0),
     decoration: pw.BoxDecoration(
       color: PdfColors.white,
       border: pw.Border.all(
@@ -85,7 +87,14 @@ final chart1 = pw.Chart(
     yAxis: pw.FixedAxis(
       [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60],
       format: (v) => '\*$v',
-      divisions: false,
+      divisions: true,
+      divisionsDashed: true,
+      /*  buildLabel: (value) {
+        return pw.Container(
+          color: baseColor,
+          child: pw.Text('test'),
+        );
+      }, */
     ),
   ),
   //ubicación de cada barra de datos
@@ -369,7 +378,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                         _getTableItem(
                           'Dirección',
-                          'Calle 35 #23-45',
+                          test_visita.direccion,
                           canterllReg,
                           capriolaReg,
                         ),
