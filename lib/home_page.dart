@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'dart:typed_data';
+import 'package:flutter/services.dart' show rootBundle;
 import 'package:path_provider/path_provider.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
@@ -7,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:pdf_test_project/util/data.dart';
 import 'package:printing/printing.dart';
 import 'dart:math';
+import 'dart:typed_data';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -34,6 +36,28 @@ const tableHeaders2 = [
   'Otras plagas'
 ];
 
+const tableHeaders3 = [
+  'Tipo de servicio',
+  'Cucarachas',
+  'Moscas',
+  'Roedores',
+  'Otras plagas'
+];
+
+const dataTable2 = [
+  ['Control general en instalaciones', 0, 0, 0, 0],
+];
+
+const dataTable3 = [
+  [
+    'Control general en instalaciones',
+    'Sin evidencia',
+    'Sin evidencia',
+    'Sin evidencia',
+    'Sin evidencia'
+  ],
+];
+
 const dataTable = [
   ['Enero', 30, 35, 22, 12],
   ['Febrero', 5, 10, 0, 3],
@@ -54,6 +78,7 @@ final expense = dataTable
 
 const baseColor = PdfColors.cyan;
 const secondColor = PdfColors.green400;
+const rowcolor = PdfColors.black;
 
 // Codigo para bar chart
 final chart1 = pw.Chart(
@@ -190,6 +215,76 @@ final table = pw.TableHelper.fromTextArray(
     ),
   ),
   cellAlignment: pw.Alignment.center,
+  cellAlignments: {0: pw.Alignment.centerLeft},
+);
+
+final table2 = pw.TableHelper.fromTextArray(
+  border: null,
+  headers: tableHeaders3,
+  data: List<List<dynamic>>.generate(
+    dataTable2.length,
+    (index) => <dynamic>[
+      dataTable2[index][0],
+      dataTable2[index][1],
+      dataTable2[index][2],
+      dataTable2[index][3],
+      dataTable2[index][4],
+      //dataTable2[index][0],
+      //(dataTable[index][1] as num) - (dataTable[index][2] as num),
+    ],
+  ),
+  headerStyle: pw.TextStyle(
+    color: PdfColors.white,
+    fontWeight: pw.FontWeight.bold,
+  ),
+  headerDecoration: const pw.BoxDecoration(
+    color: secondColor,
+  ),
+  rowDecoration: const pw.BoxDecoration(
+    border: pw.Border(
+      bottom: pw.BorderSide(
+        color: secondColor,
+        width: .5,
+      ),
+    ),
+  ),
+  cellAlignment: pw.Alignment.center,
+  cellAlignments: {0: pw.Alignment.centerLeft},
+);
+
+final table3 = pw.TableHelper.fromTextArray(
+  border: null,
+  headers: tableHeaders3,
+  data: List<List<dynamic>>.generate(
+    dataTable2.length,
+    (index) => <dynamic>[
+      dataTable3[index][0],
+      dataTable3[index][1],
+      dataTable3[index][2],
+      dataTable3[index][3],
+      dataTable3[index][4],
+      //dataTable2[index][0],
+      //(dataTable[index][1] as num) - (dataTable[index][2] as num),
+    ],
+  ),
+  headerStyle: pw.TextStyle(
+      color: PdfColors.white, fontWeight: pw.FontWeight.bold, fontSize: 10),
+  headerDecoration: const pw.BoxDecoration(
+    color: secondColor,
+  ),
+  cellStyle: const pw.TextStyle(
+    color: rowcolor,
+    fontSize: 10,
+  ),
+  rowDecoration: const pw.BoxDecoration(
+    border: pw.Border(
+      bottom: pw.BorderSide(
+        color: secondColor,
+        width: .5,
+      ),
+    ),
+  ),
+  cellAlignment: pw.Alignment.centerLeft,
   cellAlignments: {0: pw.Alignment.centerLeft},
 );
 
@@ -398,6 +493,8 @@ class _MyHomePageState extends State<MyHomePage> {
     final pw.Font capriolaReg = await PdfGoogleFonts.capriolaRegular();
     final pw.Font canterllReg = await PdfGoogleFonts.cantarellRegular();
 
+    //final footer = await rootBundle.loadString('assets/footer.png');
+
     pdf.addPage(
       pw.Page(
         pageFormat: format,
@@ -567,7 +664,30 @@ class _MyHomePageState extends State<MyHomePage> {
                   ],
                 ),
               ),
+              pw.SizedBox(height: 30),
+              table2,
+              /*  pw.SizedBox(
+                height: 30,
+                child: pw.FlutterLogo(),
+              ), */
+              //Imagen
+              // pw.Center(
+              //     child: pw.SvgImage(
+              //         svg: footer, width: 100, colorFilter: PdfColors.grey)),
+            ],
+          );
+        },
+      ),
+    );
 
+    pdf.addPage(
+      pw.Page(
+        pageFormat: format,
+        build: (context) {
+          return pw.Column(
+            crossAxisAlignment: pw.CrossAxisAlignment.start,
+            children: [
+              table3,
               //QUIMICOS
               pw.SizedBox(height: 20),
               pw.Text(
@@ -690,23 +810,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ],
               ),
-              /*  pw.SizedBox(
-                height: 30,
-                child: pw.FlutterLogo(),
-              ), */
-            ],
-          );
-        },
-      ),
-    );
 
-    pdf.addPage(
-      pw.Page(
-        pageFormat: format,
-        build: (context) {
-          return pw.Column(
-            crossAxisAlignment: pw.CrossAxisAlignment.start,
-            children: [
               _getCertificadotitle('manejo integral de plagas', capriolaReg),
               pw.SizedBox(height: 20),
               pw.Center(child: _getSubtitle('Resumen', capriolaReg)),
