@@ -441,7 +441,7 @@ class _MyHomePageState extends State<MyHomePage> {
               style: pw.TextStyle(
                 font: titleFont,
                 fontSize: 10,
-                color: PdfColors.grey,
+                color: PdfColors.black,
               ),
             ),
             pw.Text(
@@ -449,7 +449,7 @@ class _MyHomePageState extends State<MyHomePage> {
               style: pw.TextStyle(
                 font: contentFont,
                 fontSize: 10,
-                color: PdfColors.grey,
+                color: PdfColors.black,
               ),
             )
           ],
@@ -666,6 +666,22 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               pw.SizedBox(height: 30),
               table2,
+              pw.SizedBox(height: 40),
+              pw.Container(
+                decoration: pw.BoxDecoration(
+                  color: secondColor,
+                ),
+                child: pw.Column(children: [
+                  pw.Row(),
+                  pw.Row(children: [
+                    pw.Center(
+                        child: _getSmallBlackText(
+                            'mundocontrolexpertos@gmail.com', capriolaReg)),
+                  ]),
+                  pw.Divider(thickness: 4, color: PdfColors.white),
+                  pw.Row(),
+                ]),
+              ),
               /*  pw.SizedBox(
                 height: 30,
                 child: pw.FlutterLogo(),
@@ -724,8 +740,24 @@ class _MyHomePageState extends State<MyHomePage> {
                   mainAxisAlignment: pw.MainAxisAlignment.start,
                   children: [
                     _getQuimico(
+                      '                                      Gel k4',
+                      '                                           0.6 gr por 3 punto de aplicación',
+                      canterllReg,
+                      canterllReg,
+                    ),
+                  ],
+                ),
+              ),
+              pw.SizedBox(
+                height: 25,
+                child: pw.Row(
+                  //Este row completo ha de ser reutilizado
+                  //en los otros certificados
+                  mainAxisAlignment: pw.MainAxisAlignment.start,
+                  children: [
+                    _getQuimico(
                       '                                      Tenopa S.C',
-                      '                                  1 gr por 5 punto de aplicación',
+                      '                                  0.5 gr por 5 punto de aplicación',
                       canterllReg,
                       canterllReg,
                     ),
@@ -810,198 +842,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ],
               ),
-
-              _getCertificadotitle('manejo integral de plagas', capriolaReg),
-              pw.SizedBox(height: 20),
-              pw.Center(child: _getSubtitle('Resumen', capriolaReg)),
-              pw.Center(
-                child: pw.Text(
-                  'Visita durante el año en curso número 7',
-                  style: pw.TextStyle(
-                    font: capriolaReg,
-                    fontSize: 8,
-                    color: PdfColors.black,
-                  ),
-                ),
-              ),
-              pw.SizedBox(height: 20),
-              pw.SizedBox(
-                height: 150,
-                child: pw.Row(
-                  //Este row completo ha de ser reutilizado
-                  //en los otros certificados
-                  mainAxisAlignment: pw.MainAxisAlignment.spaceEvenly,
-                  children: [
-                    pw.Column(
-                      mainAxisAlignment: pw.MainAxisAlignment.spaceEvenly,
-                      children: [
-                        _getTableItem(
-                          'Fecha',
-                          '23 de agosto de 2023',
-                          canterllReg,
-                          capriolaReg,
-                        ),
-                        _getTableItem(
-                          'Hora de inicio',
-                          '9:30am',
-                          canterllReg,
-                          capriolaReg,
-                        ),
-                        _getTableItem(
-                          'Hora final',
-                          '11:30am',
-                          canterllReg,
-                          capriolaReg,
-                        ),
-                        _getTableItem(
-                          'Duración',
-                          '2 horas',
-                          canterllReg,
-                          capriolaReg,
-                        ),
-                      ],
-                    ),
-                    pw.Column(
-                      mainAxisAlignment: pw.MainAxisAlignment.spaceEvenly,
-                      children: [
-                        _getTableItem(
-                          'Ciente',
-                          'Pollos Frisby',
-                          canterllReg,
-                          capriolaReg,
-                        ),
-                        _getTableItem(
-                          'Teléfono',
-                          '3203994060',
-                          canterllReg,
-                          capriolaReg,
-                        ),
-                        _getTableItem(
-                          'Email',
-                          'firisberto@frisby.com',
-                          canterllReg,
-                          capriolaReg,
-                        ),
-                        _getTableItem(
-                          'Dirección',
-                          test_visita.direccion,
-                          canterllReg,
-                          capriolaReg,
-                        ),
-                        _getTableItem(
-                          'Municipio',
-                          '23 de agosto de 2023',
-                          canterllReg,
-                          capriolaReg,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              pw.SizedBox(height: 20),
-              pw.Text(
-                'Observaciones generales',
-                textAlign: pw.TextAlign.left,
-                style: pw.TextStyle(
-                  font: capriolaReg,
-                  fontSize: 12,
-                  color: PdfColor.fromHex('53726A'),
-                ),
-              ),
-              pw.SizedBox(height: 8),
-              pw.Text(
-                'Se realiza el control integrado de plagas en las instalaciones en general; inspección y verificación, bajo métodos de aplicación de  productos químicos y no químicos, para el control de plagas, en las áreas de producción, almacenamiento, oficinas, baños, comedores, zonas verdes, etc.',
-                style: pw.TextStyle(
-                  font: canterllReg,
-                  fontSize: 10,
-                  color: PdfColors.grey700,
-                ),
-              ),
-              pw.SizedBox(height: 20),
-              pw.Text(
-                'Observaciones generales',
-                textAlign: pw.TextAlign.left,
-                style: pw.TextStyle(
-                  font: capriolaReg,
-                  fontSize: 12,
-                  color: PdfColor.fromHex('53726A'),
-                ),
-              ),
-              pw.SizedBox(height: 8),
-              pw.Text(
-                'Zona caliente, zona preparación, neveras, barra, cajas registradoras, zona de lavado',
-                style: pw.TextStyle(
-                  font: canterllReg,
-                  fontSize: 10,
-                  color: PdfColors.grey700,
-                ),
-              ),
-              pw.SizedBox(height: 128),
-              //TODO (any): Buscar forma de poner esto como un footer fijo que se agregue siempre al final de la página
-              pw.Row(
-                mainAxisAlignment: pw.MainAxisAlignment.spaceEvenly,
-                children: [
-                  pw.Column(
-                    crossAxisAlignment: pw.CrossAxisAlignment.center,
-                    children: [
-                      pw.Text(
-                        'Verificador/a',
-                        style: pw.TextStyle(
-                          font: capriolaReg,
-                          fontSize: 12,
-                          color: PdfColor.fromHex('53726A'),
-                        ),
-                      ),
-                      pw.SizedBox(height: 22),
-                      pw.Text(
-                        'Carolina Marín',
-                        style: pw.TextStyle(
-                          font: capriolaReg,
-                          fontSize: 12,
-                          color: PdfColors.grey,
-                        ),
-                      ),
-                      pw.Text(
-                        'Auxiliar de cocina',
-                        style: pw.TextStyle(
-                          font: canterllReg,
-                          fontSize: 8,
-                          color: PdfColors.grey,
-                        ),
-                      ),
-                    ],
-                  ),
-                  pw.Column(
-                    crossAxisAlignment: pw.CrossAxisAlignment.start,
-                    children: [
-                      pw.Text(
-                        'Carlos Alberto Echavarría A.',
-                        style: pw.TextStyle(
-                          font: capriolaReg,
-                          fontSize: 12,
-                          fontWeight: pw.FontWeight.normal,
-                          color: PdfColors.black,
-                        ),
-                      ),
-                      //TODO (camilo, sebas): agregar firma (SVG)
-                      pw.Text(
-                        'Gerente',
-                        style: pw.TextStyle(
-                          font: capriolaReg,
-                          fontSize: 12,
-                          fontWeight: pw.FontWeight.bold,
-                          color: PdfColors.black,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              /*  pw.SizedBox(
-                height: 30,
-                child: pw.FlutterLogo(),
-              ), */
             ],
           );
         },
