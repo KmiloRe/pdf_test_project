@@ -52,6 +52,7 @@ final expense = dataTable
     .reduce((value, element) => value + element);
 
 const baseColor = PdfColors.cyan;
+const secondColor = PdfColors.green400;
 
 // Codigo para bar chart
 final chart1 = pw.Chart(
@@ -152,14 +153,16 @@ final chart1 = pw.Chart(
 // Data table
 final table = pw.TableHelper.fromTextArray(
   border: null,
-  headers: tableHeaders,
+  headers: tableHeaders2,
   data: List<List<dynamic>>.generate(
     dataTable.length,
     (index) => <dynamic>[
       dataTable[index][0],
       dataTable[index][1],
       dataTable[index][2],
-      (dataTable[index][1] as num) - (dataTable[index][2] as num),
+      dataTable[index][3],
+      dataTable[index][4],
+      //(dataTable[index][1] as num) - (dataTable[index][2] as num),
     ],
   ),
   headerStyle: pw.TextStyle(
@@ -167,17 +170,17 @@ final table = pw.TableHelper.fromTextArray(
     fontWeight: pw.FontWeight.bold,
   ),
   headerDecoration: const pw.BoxDecoration(
-    color: baseColor,
+    color: secondColor,
   ),
   rowDecoration: const pw.BoxDecoration(
     border: pw.Border(
       bottom: pw.BorderSide(
-        color: baseColor,
+        color: secondColor,
         width: .5,
       ),
     ),
   ),
-  cellAlignment: pw.Alignment.centerRight,
+  cellAlignment: pw.Alignment.center,
   cellAlignments: {0: pw.Alignment.centerLeft},
 );
 
@@ -199,11 +202,11 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        centerTitle: true,
-        title: Text(widget.title),
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+      //   centerTitle: true,
+      //   title: Text(widget.title),
+      // ),
       body: PdfPreview(
         build: (format) => _generatePdf(format, 'Test'),
       ),
@@ -503,17 +506,11 @@ class _MyHomePageState extends State<MyHomePage> {
               pw.Divider(thickness: 4, color: PdfColors.grey),
               pw.Expanded(flex: 3, child: chart1),
               pw.Divider(),
-              pw.Center(child: _getSubtitle('Resumen', capriolaReg)),
-              pw.Center(child: _getSubtitle('Resumen', capriolaReg)),
-              pw.Center(child: _getSubtitle('Resumen', capriolaReg)),
-              pw.Center(child: _getSubtitle('Resumen', capriolaReg)),
-              pw.Center(child: _getSubtitle('Resumen', capriolaReg)),
-              pw.Center(child: _getSubtitle('Resumen', capriolaReg)),
-              pw.Center(child: _getSubtitle('Resumen', capriolaReg)),
-              pw.Center(child: _getSubtitle('Resumen', capriolaReg)),
-              pw.Center(child: _getSubtitle('Resumen', capriolaReg)),
+              pw.Center(
+                  child: _getSubtitle('Tendencia de plagas', capriolaReg)),
+              table,
               //pw.Expanded(flex: 2, child: chart2),
-              pw.SizedBox(height: 10),
+              pw.SizedBox(height: 30),
               pw.Row(
                 crossAxisAlignment: pw.CrossAxisAlignment.start,
                 children: [
