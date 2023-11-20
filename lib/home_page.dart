@@ -23,295 +23,6 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-//Datos para hacer graficos
-// const tableHeaders = [
-//   'Mes',
-//   'Cucaracha alemana',
-//   'Mosquitos dengue',
-//   'Result',
-//   'Roedor',
-// ];
-
-// const tableHeaders2 = [
-//   'Mes',
-//   'Cucarachas',
-//   'Moscas',
-//   'Roedores',
-//   'Otras plagas'
-// ];
-
-// const tableHeaders3 = [
-//   'Tipo de servicio',
-//   'Cucarachas',
-//   'Moscas',
-//   'Roedores',
-//   'Otras plagas'
-// ];
-
-// const dataTable2 = [
-//   ['Control general en instalaciones', 0, 0, 0, 0],
-// ];
-
-// const dataTable3 = [
-//   [
-//     'Control general en instalaciones',
-//     'Sin evidencia',
-//     'Sin evidencia',
-//     'Sin evidencia',
-//     'Sin evidencia'
-//   ],
-// ];
-
-// const dataTable = [
-//   ['Enero', 30, 35, 22, 12],
-//   ['Febrero', 5, 10, 0, 3],
-//   ['Marzo', 3, 5, 2, 1],
-//   ['Abril', 10, 2, 1, 1],
-//   ['Mayo', 0, 4, 0, 0],
-//   ['Junio', 0, 0, 1, 1],
-//   // ['Insurance', 250, 310],
-// ];
-
-// const baseColor = PdfColors.cyan;
-// const secondColor = PdfColors.green400;
-// const rowcolor = PdfColors.black;
-
-// // Codigo para bar chart
-// final chart1 = pw.Chart(
-//   left: pw.Container(
-//     alignment: pw.Alignment.topCenter,
-//     margin: const pw.EdgeInsets.only(right: 5, top: 10),
-//     child: pw.Transform.rotateBox(
-//       angle: pi / 2,
-//       child: pw.Text('Cantidad'),
-//     ),
-//   ),
-//   title: pw.ChartLegend(
-//     direction: pw.Axis.horizontal,
-//     position: const pw.Alignment(0, 0),
-//     decoration: pw.BoxDecoration(
-//       color: PdfColors.white,
-//       border: pw.Border.all(
-//         color: PdfColors.black,
-//         width: .5,
-//       ),
-//     ),
-//   ),
-//   grid: pw.CartesianGrid(
-//     xAxis: pw.FixedAxis.fromStrings(
-//       List<String>.generate(
-//           dataTable.length, (index) => dataTable[index][0] as String),
-//       marginStart: 30,
-//       marginEnd: 35,
-//       ticks: false, //palitos de x al titulo del mes
-//     ),
-//     yAxis: pw.FixedAxis(
-//       [0, 5, 10, 15, 20, 25, 30, 35, 40, 45],
-//       format: (v) => '\*$v',
-//       divisions: true,
-//       divisionsDashed: true,
-//       /*  buildLabel: (value) {
-//         return pw.Container(
-//           color: baseColor,
-//           child: pw.Text('test'),
-//         );
-//       }, */
-//     ),
-//   ),
-//   //ubicación de cada barra de datos
-//   datasets: [
-//     pw.BarDataSet(
-//       color: PdfColors.blue100,
-//       legend: tableHeaders2[2],
-//       width: 7,
-//       offset: -15,
-//       borderColor: baseColor,
-//       data: List<pw.PointChartValue>.generate(
-//         dataTable.length,
-//         (i) {
-//           final v = dataTable[i][2] as num;
-//           return pw.PointChartValue(i.toDouble(), v.toDouble());
-//         },
-//       ),
-//     ),
-//     pw.BarDataSet(
-//       color: PdfColors.amber100,
-//       legend: tableHeaders2[1],
-//       width: 7,
-//       offset: -4,
-//       borderColor: PdfColors.amber,
-//       data: List<pw.PointChartValue>.generate(
-//         dataTable.length,
-//         (i) {
-//           final v = dataTable[i][1] as num;
-//           return pw.PointChartValue(i.toDouble(), v.toDouble());
-//         },
-//       ),
-//     ),
-//     pw.BarDataSet(
-//       color: PdfColors.purple100,
-//       legend: tableHeaders2[3],
-//       width: 7,
-//       offset: 7,
-//       borderColor: PdfColors.purpleAccent,
-//       data: List<pw.PointChartValue>.generate(
-//         dataTable.length,
-//         (i) {
-//           final v = dataTable[i][3] as num;
-//           return pw.PointChartValue(i.toDouble(), v.toDouble());
-//         },
-//       ),
-//     ),
-//     pw.BarDataSet(
-//       color: PdfColors.green,
-//       legend: tableHeaders2[4],
-//       width: 7,
-//       offset: 18,
-//       borderColor: PdfColors.greenAccent,
-//       data: List<pw.PointChartValue>.generate(
-//         dataTable.length,
-//         (i) {
-//           final v = dataTable[i][4] as num;
-//           return pw.PointChartValue(i.toDouble(), v.toDouble());
-//         },
-//       ),
-//     ),
-//   ],
-// );
-
-// //Tabla del final
-// // Data table
-// final table = pw.TableHelper.fromTextArray(
-//   border: null,
-//   headers: tableHeaders2,
-//   data: List<List<dynamic>>.generate(
-//     dataTable.length,
-//     (index) => <dynamic>[
-//       dataTable[index][0],
-//       dataTable[index][1],
-//       dataTable[index][2],
-//       dataTable[index][3],
-//       dataTable[index][4],
-//       //(dataTable[index][1] as num) - (dataTable[index][2] as num),
-//     ],
-//   ),
-//   headerStyle: pw.TextStyle(
-//     color: PdfColors.white,
-//     fontWeight: pw.FontWeight.bold,
-//   ),
-//   headerDecoration: const pw.BoxDecoration(
-//     color: secondColor,
-//   ),
-//   rowDecoration: const pw.BoxDecoration(
-//     border: pw.Border(
-//       bottom: pw.BorderSide(
-//         color: secondColor,
-//         width: .5,
-//       ),
-//     ),
-//   ),
-//   cellAlignment: pw.Alignment.center,
-//   cellAlignments: {0: pw.Alignment.centerLeft},
-// );
-
-// final table2 = pw.TableHelper.fromTextArray(
-//   border: null,
-//   headers: tableHeaders3,
-//   data: List<List<dynamic>>.generate(
-//     dataTable2.length,
-//     (index) => <dynamic>[
-//       dataTable2[index][0],
-//       dataTable2[index][1],
-//       dataTable2[index][2],
-//       dataTable2[index][3],
-//       dataTable2[index][4],
-//       //dataTable2[index][0],
-//       //(dataTable[index][1] as num) - (dataTable[index][2] as num),
-//     ],
-//   ),
-//   headerStyle: pw.TextStyle(
-//     color: PdfColors.white,
-//     fontWeight: pw.FontWeight.bold,
-//   ),
-//   headerDecoration: const pw.BoxDecoration(
-//     color: secondColor,
-//   ),
-//   rowDecoration: const pw.BoxDecoration(
-//     border: pw.Border(
-//       bottom: pw.BorderSide(
-//         color: secondColor,
-//         width: .5,
-//       ),
-//     ),
-//   ),
-//   cellAlignment: pw.Alignment.center,
-//   cellAlignments: {0: pw.Alignment.centerLeft},
-// );
-
-// final table3 = pw.TableHelper.fromTextArray(
-//   border: null,
-//   headers: tableHeaders3,
-//   data: List<List<dynamic>>.generate(
-//     dataTable2.length,
-//     (index) => <dynamic>[
-//       dataTable3[index][0],
-//       dataTable3[index][1],
-//       dataTable3[index][2],
-//       dataTable3[index][3],
-//       dataTable3[index][4],
-//       //dataTable2[index][0],
-//       //(dataTable[index][1] as num) - (dataTable[index][2] as num),
-//     ],
-//   ),
-//   headerStyle: pw.TextStyle(
-//       color: PdfColors.white, fontWeight: pw.FontWeight.bold, fontSize: 10),
-//   headerDecoration: const pw.BoxDecoration(
-//     color: secondColor,
-//   ),
-//   cellStyle: const pw.TextStyle(
-//     color: rowcolor,
-//     fontSize: 10,
-//   ),
-//   rowDecoration: const pw.BoxDecoration(
-//     border: pw.Border(
-//       bottom: pw.BorderSide(
-//         color: secondColor,
-//         width: .5,
-//       ),
-//     ),
-//   ),
-//   cellAlignment: pw.Alignment.centerLeft,
-//   cellAlignments: {0: pw.Alignment.centerLeft},
-// );
-
-// // Left curved line chart
-// final chart2 = pw.Chart(
-//   right: pw.ChartLegend(),
-//   grid: pw.CartesianGrid(
-//     xAxis: pw.FixedAxis([0, 1, 2, 3, 4, 5, 6]),
-//     yAxis: pw.FixedAxis(
-//       [0, 10, 20, 30, 40, 50],
-//       divisions: true,
-//     ),
-//   ),
-//   datasets: [
-//     pw.LineDataSet(
-//       legend: 'Expense',
-//       drawSurface: true,
-//       isCurved: true,
-//       drawPoints: false,
-//       color: baseColor,
-//       data: List<pw.PointChartValue>.generate(
-//         dataTable.length,
-//         (i) {
-//           final v = dataTable[i][2] as num;
-//           return pw.PointChartValue(i.toDouble(), v.toDouble());
-//         },
-//       ),
-//     ),
-//   ],
-// );
-
 MceVisit visita = const MceVisit(
   id: '1',
   date: '12/11/2023',
@@ -556,11 +267,51 @@ class _MyHomePageState extends State<MyHomePage> {
     pdf.addPage(
       pw.Page(
         pageFormat: PdfPageFormat.letter,
+        margin: const pw.EdgeInsets.only(top: 10, left: 10, right: 10),
         build: (pw.Context context) {
           return pw.Center(
             child: pw.Column(
               children: [
                 pdfHeader(image, '12/11/2023'),
+                pw.SizedBox(height: 10),
+                pdfHeaderContentTable(visit, client),
+                pw.SizedBox(height: 10),
+                fullWidthTextRow(
+                  textField: 'Áreas controladas',
+                  content: visit.controlledAreas.isEmpty
+                      ? "Punto de venta, carnicería, fruver, cajas, bodega, shut de basuras, baños, lockers, cafetín y monitoreo."
+                      : visit.controlledAreas.join(" "),
+                ),
+                pw.SizedBox(height: 10),
+                fullWidthTextRow(
+                  textField: 'Observaciones',
+                  content: visit.notes.isEmpty
+                      ? '''Se realiza el control integrado de plagas en las instalaciones en general; inspección y verificación, bajo métodos de aplicación de insecticida líquido en Solución Concentrada S.C o Emulsión Concentrada E.C por aspersión, insecticida en gel por dosificación en gotas y vapor de agua a una temperatura de 135 a 169 grados centígrados; a nivel de puntos estratégicos y/o críticos. Durante la intervención no se identificó presencia de plagas; insectos rastreros, voladores o roedores. Los vectores son controlados debido a los buenos hábitos higiénicos, locativos y distribución de objetos. Contribuyendo a la eficacia del programa de Manejo Integrado de Plagas.
+                      \nPara evitar una contaminación cruzada por favor realizar aseo profundo y desinfección al ambiente en áreas de producción antes de iniciar operaciones.'''
+                      : visit.notes,
+                ),
+                //coloredWidthBox(400),
+              ],
+            ),
+          ); // Center
+        },
+      ),
+    );
+    return pdf.save();
+  }
+
+  Future<Uint8List> _generateDiploma(MceVisit visit, MceUser client) async {
+    pw.Widget image = await getImage();
+    final pdf = pw.Document();
+    pdf.addPage(
+      pw.Page(
+        pageFormat: PdfPageFormat.letter.landscape,
+        margin: const pw.EdgeInsets.only(top: 10, left: 10, right: 10),
+        build: (pw.Context context) {
+          return pw.Center(
+            child: pw.Column(
+              children: [
+                pdfdiplomaHeader(image, '12/11/2023'),
                 pw.SizedBox(height: 10),
                 pdfHeaderContentTable(visit, client),
                 pw.SizedBox(height: 10),
