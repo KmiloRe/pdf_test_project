@@ -62,6 +62,50 @@ pw.Widget headerContentTextRow(
       ),
     );
 
+pw.Widget bigHeaderContentTextRow(
+        {required String textField,
+        required String content,
+        bool isPrimary = false}) =>
+    pw.SizedBox(
+      width: isPrimary ? 140 : 100,
+      height: 30,
+      child: pw.Row(
+        mainAxisAlignment: pw.MainAxisAlignment.start,
+        children: [
+          pw.ConstrainedBox(
+            constraints: pw.BoxConstraints(
+              maxWidth: isPrimary ? 1 : 100,
+            ),
+            child: pw.Text(
+              "$textField:",
+              overflow: pw.TextOverflow.clip,
+              textAlign: pw.TextAlign.start,
+              style: pw.TextStyle(
+                fontSize: 9,
+                fontWeight: pw.FontWeight.bold,
+              ),
+            ),
+          ),
+          pw.SizedBox(
+            width: 5,
+          ),
+          pw.ConstrainedBox(
+            constraints: pw.BoxConstraints(
+              maxWidth: isPrimary ? 140 : 100,
+            ),
+            child: pw.Text(
+              content,
+              overflow: pw.TextOverflow.clip,
+              textAlign: pw.TextAlign.start,
+              style: const pw.TextStyle(
+                fontSize: 8,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+
 pw.Widget coloredWidthBox(double widthSize) => pw.Container(
       width: widthSize,
       height: 20,

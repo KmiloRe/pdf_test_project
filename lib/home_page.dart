@@ -90,176 +90,176 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  pw.Text _getMinortitle(String x, pw.Font font) => pw.Text(
-        x,
-        textAlign: pw.TextAlign.left,
-        style: pw.TextStyle(
-          font: font,
-          fontSize: 12,
-          color: PdfColor.fromHex('53726A'),
-        ),
-      );
+  // pw.Text _getMinortitle(String x, pw.Font font) => pw.Text(
+  //       x,
+  //       textAlign: pw.TextAlign.left,
+  //       style: pw.TextStyle(
+  //         font: font,
+  //         fontSize: 12,
+  //         color: PdfColor.fromHex('53726A'),
+  //       ),
+  //     );
 
-  pw.Widget _getTitle(String certifType, pw.Font font) => pw.Text(
-        '$certifType',
-        textAlign: pw.TextAlign.center,
-        style: pw.TextStyle(
-          font: font,
-          fontSize: 32,
-          color: PdfColor.fromHex('53726A'),
-        ),
-      );
-  //
-  pw.Widget _getCertificadotitle(String certifType, pw.Font font) => pw.Text(
-        'Certificado de $certifType',
-        textAlign: pw.TextAlign.center,
-        style: pw.TextStyle(
-          font: font,
-          fontSize: 32,
-          color: PdfColor.fromHex('53726A'),
-        ),
-      );
+  // pw.Widget _getTitle(String certifType, pw.Font font) => pw.Text(
+  //       '$certifType',
+  //       textAlign: pw.TextAlign.center,
+  //       style: pw.TextStyle(
+  //         font: font,
+  //         fontSize: 32,
+  //         color: PdfColor.fromHex('53726A'),
+  //       ),
+  //     );
+  // //
+  // pw.Widget _getCertificadotitle(String certifType, pw.Font font) => pw.Text(
+  //       'Certificado de $certifType',
+  //       textAlign: pw.TextAlign.center,
+  //       style: pw.TextStyle(
+  //         font: font,
+  //         fontSize: 32,
+  //         color: PdfColor.fromHex('53726A'),
+  //       ),
+  //     );
 
-  pw.Text _getSubtitle(String text, pw.Font font) => pw.Text(
-        text,
-        textAlign: pw.TextAlign.center,
-        style: pw.TextStyle(
-          font: font,
-          fontSize: 22,
-          color: PdfColor.fromHex('53726A'),
-        ),
-      );
+  // pw.Text _getSubtitle(String text, pw.Font font) => pw.Text(
+  //       text,
+  //       textAlign: pw.TextAlign.center,
+  //       style: pw.TextStyle(
+  //         font: font,
+  //         fontSize: 22,
+  //         color: PdfColor.fromHex('53726A'),
+  //       ),
+  //     );
 
-  pw.Text _getSmallBlackText(String text, pw.Font font) => pw.Text(
-        text,
-        style: pw.TextStyle(
-          font: font,
-          fontSize: 8,
-          color: PdfColors.black,
-        ),
-      );
+  // pw.Text _getSmallBlackText(String text, pw.Font font) => pw.Text(
+  //       text,
+  //       style: pw.TextStyle(
+  //         font: font,
+  //         fontSize: 8,
+  //         color: PdfColors.black,
+  //       ),
+  //     );
 
-  //Metodos quemados
+  // //Metodos quemados
 
-  pw.SizedBox _getTableItemroedores(
-    String title,
-    pw.Font titleFont,
-    pw.Font contentFont,
-  ) =>
-      pw.SizedBox(
-        width: 200,
-        child: pw.Row(
-          mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: pw.CrossAxisAlignment.center,
-          children: [
-            pw.Text(
-              title,
-              style: pw.TextStyle(
-                font: titleFont,
-                // fontWeight: FontWeight.bold,
-                fontSize: 10,
-                color: PdfColors.black,
-              ),
-            ),
-            pw.Text(
-              '     Sin evidencia:  0',
-              style: pw.TextStyle(
-                font: contentFont,
-                fontSize: 8,
-                color: PdfColors.grey,
-              ),
-            ),
-            pw.Text(
-              '     Bajo: 1 a 5',
-              style: pw.TextStyle(
-                font: contentFont,
-                fontSize: 8,
-                color: PdfColors.grey,
-              ),
-            ),
-            pw.Text(
-              '     Medio: 5 a 10 ',
-              style: pw.TextStyle(
-                font: contentFont,
-                fontSize: 8,
-                color: PdfColors.grey,
-              ),
-            ),
-            pw.Text(
-              '     Alto: 11 en adelante',
-              style: pw.TextStyle(
-                font: contentFont,
-                fontSize: 8,
-                color: PdfColors.grey,
-              ),
-            )
-          ],
-        ),
-      );
+  // pw.SizedBox _getTableItemroedores(
+  //   String title,
+  //   pw.Font titleFont,
+  //   pw.Font contentFont,
+  // ) =>
+  //     pw.SizedBox(
+  //       width: 200,
+  //       child: pw.Row(
+  //         mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
+  //         crossAxisAlignment: pw.CrossAxisAlignment.center,
+  //         children: [
+  //           pw.Text(
+  //             title,
+  //             style: pw.TextStyle(
+  //               font: titleFont,
+  //               // fontWeight: FontWeight.bold,
+  //               fontSize: 10,
+  //               color: PdfColors.black,
+  //             ),
+  //           ),
+  //           pw.Text(
+  //             '     Sin evidencia:  0',
+  //             style: pw.TextStyle(
+  //               font: contentFont,
+  //               fontSize: 8,
+  //               color: PdfColors.grey,
+  //             ),
+  //           ),
+  //           pw.Text(
+  //             '     Bajo: 1 a 5',
+  //             style: pw.TextStyle(
+  //               font: contentFont,
+  //               fontSize: 8,
+  //               color: PdfColors.grey,
+  //             ),
+  //           ),
+  //           pw.Text(
+  //             '     Medio: 5 a 10 ',
+  //             style: pw.TextStyle(
+  //               font: contentFont,
+  //               fontSize: 8,
+  //               color: PdfColors.grey,
+  //             ),
+  //           ),
+  //           pw.Text(
+  //             '     Alto: 11 en adelante',
+  //             style: pw.TextStyle(
+  //               font: contentFont,
+  //               fontSize: 8,
+  //               color: PdfColors.grey,
+  //             ),
+  //           )
+  //         ],
+  //       ),
+  //     );
 
-  pw.SizedBox _getQuimico(
-    String producto,
-    String docificacion,
-    pw.Font titleFont,
-    pw.Font contentFont,
-  ) =>
-      pw.SizedBox(
-        width: 200,
-        child: pw.Row(
-          mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: pw.CrossAxisAlignment.center,
-          children: [
-            pw.Text(
-              producto,
-              style: pw.TextStyle(
-                font: titleFont,
-                fontSize: 10,
-                color: PdfColors.black,
-              ),
-            ),
-            pw.Text(
-              docificacion,
-              style: pw.TextStyle(
-                font: contentFont,
-                fontSize: 10,
-                color: PdfColors.black,
-              ),
-            )
-          ],
-        ),
-      );
+  // pw.SizedBox _getQuimico(
+  //   String producto,
+  //   String docificacion,
+  //   pw.Font titleFont,
+  //   pw.Font contentFont,
+  // ) =>
+  //     pw.SizedBox(
+  //       width: 200,
+  //       child: pw.Row(
+  //         mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
+  //         crossAxisAlignment: pw.CrossAxisAlignment.center,
+  //         children: [
+  //           pw.Text(
+  //             producto,
+  //             style: pw.TextStyle(
+  //               font: titleFont,
+  //               fontSize: 10,
+  //               color: PdfColors.black,
+  //             ),
+  //           ),
+  //           pw.Text(
+  //             docificacion,
+  //             style: pw.TextStyle(
+  //               font: contentFont,
+  //               fontSize: 10,
+  //               color: PdfColors.black,
+  //             ),
+  //           )
+  //         ],
+  //       ),
+  //     );
 
-  pw.SizedBox _getTableItem(
-    String title,
-    String content,
-    pw.Font titleFont,
-    pw.Font contentFont,
-  ) =>
-      pw.SizedBox(
-        width: 200,
-        child: pw.Row(
-          mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: pw.CrossAxisAlignment.center,
-          children: [
-            pw.Text(
-              title,
-              style: pw.TextStyle(
-                font: titleFont,
-                fontSize: 12,
-                color: PdfColors.grey,
-              ),
-            ),
-            pw.Text(
-              content,
-              style: pw.TextStyle(
-                font: contentFont,
-                fontSize: 12,
-                color: PdfColors.grey,
-              ),
-            )
-          ],
-        ),
-      );
+  // pw.SizedBox _getTableItem(
+  //   String title,
+  //   String content,
+  //   pw.Font titleFont,
+  //   pw.Font contentFont,
+  // ) =>
+  //     pw.SizedBox(
+  //       width: 200,
+  //       child: pw.Row(
+  //         mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
+  //         crossAxisAlignment: pw.CrossAxisAlignment.center,
+  //         children: [
+  //           pw.Text(
+  //             title,
+  //             style: pw.TextStyle(
+  //               font: titleFont,
+  //               fontSize: 12,
+  //               color: PdfColors.grey,
+  //             ),
+  //           ),
+  //           pw.Text(
+  //             content,
+  //             style: pw.TextStyle(
+  //               font: contentFont,
+  //               fontSize: 12,
+  //               color: PdfColors.grey,
+  //             ),
+  //           )
+  //         ],
+  //       ),
+  //     );
 
   Future<Uint8List> _generatePdf(MceVisit visit, MceUser client) async {
     pw.Widget image = await getImage();
@@ -302,6 +302,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<Uint8List> _generateDiploma(MceVisit visit, MceUser client) async {
     pw.Widget image = await getImage();
+    pw.Widget imagesgs = await getImagesgs();
     final pdf = pw.Document();
     pdf.addPage(
       pw.Page(
@@ -326,13 +327,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 pw.SizedBox(height: 20),
-                pdfHeaderContentTable(visit, client),
-                pw.SizedBox(height: 10),
+                pdfdiplomaMiddlesection(imagesgs, visit, client),
+                //pdfHeaderContentTable(visit, client),
+                pw.SizedBox(height: 40),
                 fullWidthTextRow(
                   textField: 'Áreas controladas',
                   content: visit.controlledAreas.isEmpty
                       ? "Punto de venta, carnicería, fruver, cajas, bodega, shut de basuras, baños, lockers, cafetín y monitoreo."
-                      : visit.controlledAreas.join(" "),
+                      : visit.controlledAreas.join(", "),
                 ),
                 pw.SizedBox(height: 10),
                 fullWidthTextRow(
