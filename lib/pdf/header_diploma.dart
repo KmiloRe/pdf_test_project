@@ -1,23 +1,41 @@
 part of pdf;
 
-pw.Widget pdfdiplomaHeader(pw.Widget image, String date) => pw.Row(children: [
+pw.Widget pdfdiplomaHeader(pw.Widget image) => pw.Row(children: [
       pw.Padding(
         padding: const pw.EdgeInsets.symmetric(horizontal: 0),
         child: pw.Container(
           alignment: pw.Alignment.center,
-          width: 150,
+          width: 120,
           child: image,
         ),
       ),
+      pw.SizedBox(width: 20),
       pw.Column(children: [
+        pw.SizedBox(height: 10),
         pw.SizedBox(
           width: 260,
-          child: pw.Center(
+          child: pw.Align(
+            alignment: pw.Alignment.centerLeft,
             child: pw.Text(
               'Mundo Control Expertos',
               style: pw.TextStyle(
-                fontSize: 16,
+                fontSize: 18,
                 fontWeight: pw.FontWeight.bold,
+              ),
+              textAlign: pw.TextAlign.center,
+            ),
+          ),
+        ),
+        pw.SizedBox(height: 20),
+        pw.SizedBox(
+          width: 260,
+          child: pw.Align(
+            alignment: pw.Alignment.centerLeft,
+            child: pw.Text(
+              'Nit 9014313983',
+              style: pw.TextStyle(
+                fontSize: 12,
+                fontWeight: pw.FontWeight.normal,
               ),
               textAlign: pw.TextAlign.center,
             ),
@@ -25,9 +43,10 @@ pw.Widget pdfdiplomaHeader(pw.Widget image, String date) => pw.Row(children: [
         ),
         pw.SizedBox(
           width: 260,
-          child: pw.Center(
+          child: pw.Align(
+            alignment: pw.Alignment.centerLeft,
             child: pw.Text(
-              'Nit 9014313983',
+              'Dirección: Calle 58 # 35 - 94 Barrio Boston',
               style: pw.TextStyle(
                 fontSize: 12,
                 fontWeight: pw.FontWeight.normal,

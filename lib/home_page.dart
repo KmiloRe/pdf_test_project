@@ -85,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
       //   title: Text(widget.title),
       // ),
       body: PdfPreview(
-        build: (format) => _generatePdf(visita, client),
+        build: (format) => _generateDiploma(visita, client),
       ),
     );
   }
@@ -311,8 +311,21 @@ class _MyHomePageState extends State<MyHomePage> {
           return pw.Center(
             child: pw.Column(
               children: [
-                pdfdiplomaHeader(image, '12/11/2023'),
-                pw.SizedBox(height: 10),
+                pdfdiplomaHeader(image),
+                pw.SizedBox(height: 20),
+                pw.SizedBox(
+                  child: pw.Center(
+                    child: pw.Text(
+                      'CERTIFICADO DE FUMIGACIÓN',
+                      style: pw.TextStyle(
+                        fontSize: 22,
+                        fontWeight: pw.FontWeight.bold,
+                      ),
+                      textAlign: pw.TextAlign.center,
+                    ),
+                  ),
+                ),
+                pw.SizedBox(height: 20),
                 pdfHeaderContentTable(visit, client),
                 pw.SizedBox(height: 10),
                 fullWidthTextRow(
