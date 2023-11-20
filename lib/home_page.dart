@@ -312,30 +312,41 @@ class MyHomePage extends StatefulWidget {
 //   ],
 // );
 
-MceVisit visita = MceVisit(
+MceVisit visita = const MceVisit(
   id: '1',
   date: '12/11/2023',
   serviceType: 'Control de instalaciones',
   initialHour: '',
   endHour: '',
-   verifiedBy: 'Andrea',
+  verifiedBy: 'Andrea',
   verifyerPosition: 'Asistente',
   workerName: 'Jose Reyes',
   notes: 'Sin notas',
-  final List<String> controlledAreas;
-  final Map<String, dynamic> infestationGrades;
-  final List<Map<String, dynamic>> chemicalsApplied;
-  final List<String> higienicalRecomendations;
-  final List<String> locationRecomendations;
-  final List<Map<String, dynamic>> visitPhotoList;
-  final String initialPhotoUrl;
-  final String finalPhotoUrl;
+  controlledAreas: ['Área de carga', 'Cocina', 'Baños de hombre'],
+  infestationGrades: {'moscas': 40, 'cucarachas': 1, 'roedores': 2, 'otros': 3},
+  chemicalsApplied: [
+    {'matamax': 1},
+    {'Quimico 2': 3}
+  ],
+  higienicalRecomendations: ['Limpieza', 'Cocina limpia'],
+  locationRecomendations: [
+    'Trapear área de carga',
+    'desengrasar cocina',
+    'Desinfectar baños de hombre'
+  ],
+  visitPhotoList: [
+    {'matamax': 1},
+    {'Quimico 2': 3}
+  ],
+  initialPhotoUrl: 'https://cdn-icons-png.flaticon.com/512/29/29264.png',
+  finalPhotoUrl: 'https://cdn-icons-png.flaticon.com/512/29/29264.png',
   isCompleted: true,
   visitsId: '1',
   clientName: 'Qbano unicentro',
   productPhotoUrl: 'https://cdn-icons-png.flaticon.com/512/29/29264.png',
-
 );
+
+MceUser client = const MceUser();
 
 class _MyHomePageState extends State<MyHomePage> {
   final pdf = pw.Document();
@@ -348,7 +359,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void savePdf() async {
-    final doc = await _generatePdf(PdfPageFormat.a4, 'Test');
+    final doc = await _generatePdf(visita, client);
     final output = await getTemporaryDirectory();
     final file = File('${output.path}/example.pdf');
     await file.writeAsBytes(doc);
@@ -363,7 +374,7 @@ class _MyHomePageState extends State<MyHomePage> {
       //   title: Text(widget.title),
       // ),
       body: PdfPreview(
-        build: (format) => _generatePdf(format, 'Test'),
+        build: (format) => _generatePdf(visita, client),
       ),
     );
   }
@@ -539,41 +550,41 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       );
 
-  Future<Uint8List> _generatePdf({required MceVisit visit, required MceUser client}) async {
-  pw.Widget image = await getImage();
-  final pdf = pw.Document();
-  pdf.addPage(
-    pw.Page(
-      pageFormat: PdfPageFormat.letter,
-      build: (pw.Context context) {
-        return pw.Center(
-          child: pw.Column(
-            children: [
-              pdfHeader(image, '12/11/2023'),
-              pw.SizedBox(height: 10),
-              pdfHeaderContentTable(visit, client),
-              pw.SizedBox(height: 10),
-              fullWidthTextRow(
-                textField: 'Áreas controladas',
-                content: visit.controlledAreas.isEmpty
-                    ? "Punto de venta, carnicería, fruver, cajas, bodega, shut de basuras, baños, lockers, cafetín y monitoreo."
-                    : visit.controlledAreas.join(" "),
-              ),
-              pw.SizedBox(height: 10),
-              fullWidthTextRow(
-                textField: 'Observaciones',
-                content: visit.notes.isEmpty
-                    ? '''Se realiza el control integrado de plagas en las instalaciones en general; inspección y verificación, bajo métodos de aplicación de insecticida líquido en Solución Concentrada S.C o Emulsión Concentrada E.C por aspersión, insecticida en gel por dosificación en gotas y vapor de agua a una temperatura de 135 a 169 grados centígrados; a nivel de puntos estratégicos y/o críticos. Durante la intervención no se identificó presencia de plagas; insectos rastreros, voladores o roedores. Los vectores son controlados debido a los buenos hábitos higiénicos, locativos y distribución de objetos. Contribuyendo a la eficacia del programa de Manejo Integrado de Plagas.
+  Future<Uint8List> _generatePdf(MceVisit visit, MceUser client) async {
+    pw.Widget image = await getImage();
+    final pdf = pw.Document();
+    pdf.addPage(
+      pw.Page(
+        pageFormat: PdfPageFormat.letter,
+        build: (pw.Context context) {
+          return pw.Center(
+            child: pw.Column(
+              children: [
+                pdfHeader(image, '12/11/2023'),
+                pw.SizedBox(height: 10),
+                pdfHeaderContentTable(visit, client),
+                pw.SizedBox(height: 10),
+                fullWidthTextRow(
+                  textField: 'Áreas controladas',
+                  content: visit.controlledAreas.isEmpty
+                      ? "Punto de venta, carnicería, fruver, cajas, bodega, shut de basuras, baños, lockers, cafetín y monitoreo."
+                      : visit.controlledAreas.join(" "),
+                ),
+                pw.SizedBox(height: 10),
+                fullWidthTextRow(
+                  textField: 'Observaciones',
+                  content: visit.notes.isEmpty
+                      ? '''Se realiza el control integrado de plagas en las instalaciones en general; inspección y verificación, bajo métodos de aplicación de insecticida líquido en Solución Concentrada S.C o Emulsión Concentrada E.C por aspersión, insecticida en gel por dosificación en gotas y vapor de agua a una temperatura de 135 a 169 grados centígrados; a nivel de puntos estratégicos y/o críticos. Durante la intervención no se identificó presencia de plagas; insectos rastreros, voladores o roedores. Los vectores son controlados debido a los buenos hábitos higiénicos, locativos y distribución de objetos. Contribuyendo a la eficacia del programa de Manejo Integrado de Plagas.
                       \nPara evitar una contaminación cruzada por favor realizar aseo profundo y desinfección al ambiente en áreas de producción antes de iniciar operaciones.'''
-                    : visit.notes,
-              ),
-              //coloredWidthBox(400),
-            ],
-          ),
-        ); // Center
-      },
-    ),
-  );
-  return pdf.save();
+                      : visit.notes,
+                ),
+                //coloredWidthBox(400),
+              ],
+            ),
+          ); // Center
+        },
+      ),
+    );
+    return pdf.save();
+  }
 }
-
