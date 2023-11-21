@@ -66,18 +66,18 @@ pw.Widget pdfdiplomaMiddlesection(
         children: [
           pw.TableRow(
             children: [
-              headerContentTextRow(
+              bigHeaderContentTextRow(
                 textField: 'Cliente',
                 content: client.name.isEmpty
                     ? 'Supermercado Merkepaisa'
                     : client.name,
-                isPrimary: true,
+                // isPrimary: true,
               ),
             ],
           ),
           pw.TableRow(
             children: [
-              headerContentTextRow(
+              bigHeaderContentTextRow(
                 textField: 'Sede',
                 content: client.location.isEmpty ? 'Caldas' : client.location,
               ),
@@ -85,33 +85,62 @@ pw.Widget pdfdiplomaMiddlesection(
           ),
           pw.TableRow(
             children: [
-              headerContentTextRow(
-                isPrimary: true,
+              bigHeaderContentTextRow(
+                //isPrimary: true,
                 textField: 'Tipo de servicio',
                 content: visit.serviceType.isEmpty
                     ? 'Control general'
-                    : 'Control general de instalaciones',
+                    : visit.serviceType,
               ),
             ],
           ),
           pw.TableRow(
             children: [
-              headerContentTextRow(
-                isPrimary: true,
+              bigHeaderContentTextRow(
+                // isPrimary: true,
                 textField: 'Fecha de servicio',
+                content: visit.date.isEmpty ? 'Hoy' : visit.date,
+              ),
+            ],
+          ),
+          pw.TableRow(
+            children: [
+              bigHeaderContentTextRow(
+                // isPrimary: true,
+                textField: 'Áreas controladas',
                 content: visit.date.isEmpty ? 'Hoy' : visit.date,
               ),
             ],
           ),
         ],
       ),
-      pw.SizedBox(width: 520),
+      pw.SizedBox(width: 100),
       pw.Padding(
         padding: const pw.EdgeInsets.symmetric(horizontal: 0),
         child: pw.Container(
           alignment: pw.Alignment.center,
-          width: 60,
+          width: 400,
           child: image,
         ),
+      ),
+    ]);
+
+pw.Widget pdfdiplomaFootersection(
+        pw.Widget image, MceVisit visit, MceUser client) =>
+    pw.Row(children: [
+      pw.Table(
+        defaultVerticalAlignment: pw.TableCellVerticalAlignment.middle,
+        children: [
+          pw.TableRow(
+            children: [
+              diplomafullWidthTextRow(
+                textField: 'Áreas controladas',
+                content: visit.controlledAreas.isEmpty
+                    ? "Punto de venta, carnicería, fruver, cajas, bodega, shut de basuras, baños, lockers, cafetín y monitoreo."
+                    : visit.controlledAreas.join(", "),
+              ),
+            ],
+          ),
+        ],
       ),
     ]);

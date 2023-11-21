@@ -12,6 +12,6 @@ import 'package:pdf/widgets.dart' as pw;
 
 part 'pdf_orchestor.dart';
 part 'header.dart';
-part 'header_footer_diploma.dart';
+part 'header_middle_footer_diploma.dart';
 part 'header_content_table.dart';
 part 'commons.dart';

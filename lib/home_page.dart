@@ -326,16 +326,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                 ),
-                pw.SizedBox(height: 20),
+                pw.SizedBox(height: 40),
                 pdfdiplomaMiddlesection(imagesgs, visit, client),
                 //pdfHeaderContentTable(visit, client),
                 pw.SizedBox(height: 40),
-                fullWidthTextRow(
-                  textField: 'Áreas controladas',
-                  content: visit.controlledAreas.isEmpty
-                      ? "Punto de venta, carnicería, fruver, cajas, bodega, shut de basuras, baños, lockers, cafetín y monitoreo."
-                      : visit.controlledAreas.join(", "),
-                ),
+                pdfdiplomaFootersection(image, visit, client),
                 pw.SizedBox(height: 10),
                 fullWidthTextRow(
                   textField: 'Observaciones',

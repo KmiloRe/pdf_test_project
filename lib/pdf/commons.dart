@@ -67,21 +67,21 @@ pw.Widget bigHeaderContentTextRow(
         required String content,
         bool isPrimary = false}) =>
     pw.SizedBox(
-      width: isPrimary ? 140 : 100,
+      width: isPrimary ? 140 : 300,
       height: 30,
       child: pw.Row(
         mainAxisAlignment: pw.MainAxisAlignment.start,
         children: [
           pw.ConstrainedBox(
             constraints: pw.BoxConstraints(
-              maxWidth: isPrimary ? 1 : 100,
+              maxWidth: isPrimary ? 140 : 200,
             ),
             child: pw.Text(
               "$textField:",
               overflow: pw.TextOverflow.clip,
               textAlign: pw.TextAlign.start,
               style: pw.TextStyle(
-                fontSize: 9,
+                fontSize: 13,
                 fontWeight: pw.FontWeight.bold,
               ),
             ),
@@ -91,14 +91,14 @@ pw.Widget bigHeaderContentTextRow(
           ),
           pw.ConstrainedBox(
             constraints: pw.BoxConstraints(
-              maxWidth: isPrimary ? 140 : 100,
+              maxWidth: isPrimary ? 140 : 200,
             ),
             child: pw.Text(
               content,
               overflow: pw.TextOverflow.clip,
               textAlign: pw.TextAlign.start,
               style: const pw.TextStyle(
-                fontSize: 8,
+                fontSize: 11,
               ),
             ),
           ),
@@ -115,6 +115,36 @@ pw.Widget coloredWidthBox(double widthSize) => pw.Container(
     );
 
 pw.Widget fullWidthTextRow(
+        {required String textField, required String content}) =>
+    pw.SizedBox(
+      child: pw.Wrap(
+        alignment: pw.WrapAlignment.start,
+        children: [
+          pw.Text(
+            "$textField:",
+            overflow: pw.TextOverflow.clip,
+            textAlign: pw.TextAlign.justify,
+            style: pw.TextStyle(
+              fontSize: 10,
+              fontWeight: pw.FontWeight.bold,
+            ),
+          ),
+          pw.SizedBox(
+            width: 5,
+          ),
+          pw.Text(
+            content,
+            overflow: pw.TextOverflow.clip,
+            textAlign: pw.TextAlign.justify,
+            style: const pw.TextStyle(
+              fontSize: 10,
+            ),
+          ),
+        ],
+      ),
+    );
+
+pw.Widget diplomafullWidthTextRow(
         {required String textField, required String content}) =>
     pw.SizedBox(
       child: pw.Wrap(
