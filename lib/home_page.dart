@@ -36,9 +36,9 @@ MceVisit visita = const MceVisit(
   controlledAreas: ['Área de carga', 'Cocina', 'Baños de hombre'],
   infestationGrades: {
     'moscas': '40',
-    'cucarachas': '1',
-    'roedores': '2',
-    'otros': '3'
+    'cucarachas': '0',
+    'roedores': '305',
+    'otros': '2'
   },
   chemicalsApplied: [
     {'matamax': 1},
@@ -194,15 +194,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 pw.SizedBox(height: 10),
                 pdfinfestationgradeTable(visit, client),
-                pw.Row(children: [
-                  pw.Text(
-                    "Cucaracha Alemana",
-                    textAlign: pw.TextAlign.justify,
-                    style: const pw.TextStyle(
-                      fontSize: 10,
-                    ),
-                  ),
-                ]),
+                //! aqui pie de pagina
               ],
             ),
           ); // Center
