@@ -282,22 +282,49 @@ class _MyHomePageState extends State<MyHomePage> {
                       ? "Punto de venta, carnicería, fruver, cajas, bodega, shut de basuras, baños, lockers, cafetín y monitoreo."
                       : visit.controlledAreas.join(", ") + ("."),
                 ),
+
+                // fullWidthTextRow(
+                //   textField: 'Observaciones',
+                //   content: visit.notes.isEmpty
+                //       ? '''Se realiza el control integrado de plagas en las instalaciones en general; inspección y verificación, bajo métodos de aplicación de insecticida líquido en Solución Concentrada S.C o Emulsión Concentrada E.C por aspersión, insecticida en gel por dosificación en gotas y vapor de agua a una temperatura de 135 a 169 grados centígrados; a nivel de puntos estratégicos y/o críticos. Durante la intervención no se identificó presencia de plagas; insectos rastreros, voladores o roedores. Los vectores son controlados debido a los buenos hábitos higiénicos, locativos y distribución de objetos. Contribuyendo a la eficacia del programa de Manejo Integrado de Plagas.
+                //       \nPara evitar una contaminación cruzada por favor realizar aseo profundo y desinfección al ambiente en áreas de producción antes de iniciar operaciones.'''
+                //       : 'Se realiza el control integrado de plagas en las instalaciones en general; inspección y verificación, bajo métodos\nde aplicación de insecticida líquido en Solución Concentrada S.C o Emulsión Concentrada E.C por aspersión\n, insecticida en gel por dosificación en gotas y vapor de agua a una temperatura de 135 a 169 grados centígrados;\na nivel de puntos estratégicos y/o críticos. Durante la intervención no se identificó presencia de plagas; insectos\nrastreros, voladores o roedores. Los vectores son controlados debido a los buenos hábitos higiénicos, locativos y\ndistribución de objetos. Contribuyendo a la eficacia del programa de Manejo Integrado de Plagas.' /*visit.notes,*/,
+                // ),
+
                 pw.SizedBox(height: 10),
-                fullWidthTextRow(
-                  textField: 'Observaciones',
-                  content: visit.notes.isEmpty
-                      ? '''Se realiza el control integrado de plagas en las instalaciones en general; inspección y verificación, bajo métodos de aplicación de insecticida líquido en Solución Concentrada S.C o Emulsión Concentrada E.C por aspersión, insecticida en gel por dosificación en gotas y vapor de agua a una temperatura de 135 a 169 grados centígrados; a nivel de puntos estratégicos y/o críticos. Durante la intervención no se identificó presencia de plagas; insectos rastreros, voladores o roedores. Los vectores son controlados debido a los buenos hábitos higiénicos, locativos y distribución de objetos. Contribuyendo a la eficacia del programa de Manejo Integrado de Plagas.
-                      \nPara evitar una contaminación cruzada por favor realizar aseo profundo y desinfección al ambiente en áreas de producción antes de iniciar operaciones.'''
-                      : visit.notes,
+                pw.Align(
+                  alignment: pw.Alignment.topLeft,
+                  child: pw.Wrap(alignment: pw.WrapAlignment.start, children: [
+                    pw.Text(
+                      "Observaciones:",
+                      overflow: pw.TextOverflow.clip,
+                      textAlign: pw.TextAlign.justify,
+                      style: pw.TextStyle(
+                        fontSize: 10,
+                        fontWeight: pw.FontWeight.bold,
+                      ),
+                    ),
+                    pw.SizedBox(width: 10),
+                    pw.Text(
+                      'Se realiza el control integrado de plagas en las instalaciones en general; inspección y verificación, bajo métodos de aplicación de insecticida líquido en Solución Concentrada S.C o Emulsión Concentrada E.C por aspersión, insecticida en gel por dosificación en gotas y vapor de agua a una temperatura de 135 a 169 grados centígrados; a nivel de puntos estratégicos y/o críticos. Durante la intervención no se identificó presencia de plagas; insectos rastreros, voladores o roedores. Los vectores son controlados debido a los buenos hábitos higiénicos, locativos y distribución de objetos. Contribuyendo a la eficacia del programa de Manejo Integrado de Plagas.',
+                      overflow: pw.TextOverflow.clip,
+                      textAlign: pw.TextAlign.justify,
+                      style: const pw.TextStyle(
+                        fontSize: 10,
+                      ),
+                    ),
+                    pw.Text(
+                      "Para evitar una contaminación cruzada por favor realizar aseo profundo y desinfección al ambiente en áreas de producción antes de iniciar operaciones.",
+                      overflow: pw.TextOverflow.clip,
+                      textAlign: pw.TextAlign.justify,
+                      style: const pw.TextStyle(
+                        fontSize: 10,
+                      ),
+                    ),
+                  ]),
                 ),
 
-                pw.Text(
-                  'Se realiza el control integrado de plagas en las instalaciones en general; inspección y verificación, bajo métodos de aplicación de  productos químicos y no químicos, para el control de plagas, en las áreas de producción, almacenamiento, oficinas, baños, comedores, zonas verdes, etc.',
-                  style: const pw.TextStyle(
-                    fontSize: 10,
-                    color: PdfColors.grey700,
-                  ),
-                ),
+                pw.SizedBox(width: 200),
                 //coloredWidthBox(400),
               ],
             ),
