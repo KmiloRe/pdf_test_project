@@ -144,36 +144,6 @@ pw.Widget fullWidthTextRow(
       ),
     );
 
-pw.Widget diplomafullWidthTextRow(
-        {required String textField, required String content}) =>
-    pw.SizedBox(
-      child: pw.Wrap(
-        alignment: pw.WrapAlignment.start,
-        children: [
-          pw.Text(
-            "$textField:",
-            overflow: pw.TextOverflow.clip,
-            textAlign: pw.TextAlign.justify,
-            style: pw.TextStyle(
-              fontSize: 10,
-              fontWeight: pw.FontWeight.bold,
-            ),
-          ),
-          pw.SizedBox(
-            width: 5,
-          ),
-          pw.Text(
-            content,
-            overflow: pw.TextOverflow.clip,
-            textAlign: pw.TextAlign.justify,
-            style: const pw.TextStyle(
-              fontSize: 10,
-            ),
-          ),
-        ],
-      ),
-    );
-
 pw.Widget diplomafooterTextRow(
         {required String textField, required String content}) =>
     pw.SizedBox(

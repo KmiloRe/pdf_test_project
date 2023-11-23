@@ -85,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
       //   title: Text(widget.title),
       // ),
       body: PdfPreview(
-        build: (format) => _generateDiploma(visita, client),
+        build: (format) => _generatePdf(visita, client),
       ),
     );
   }
@@ -333,14 +333,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 pw.SizedBox(height: 80),
                 pdfdiplomaFootersection(imagefirma, visit, client),
                 pw.SizedBox(height: 10),
-                // fullWidthTextRow(
-                //   textField: 'Observaciones',
-                //   content: visit.notes.isEmpty
-                //       ? '''Se realiza el control integrado de plagas en las instalaciones en general; inspección y verificación, bajo métodos de aplicación de insecticida líquido en Solución Concentrada S.C o Emulsión Concentrada E.C por aspersión, insecticida en gel por dosificación en gotas y vapor de agua a una temperatura de 135 a 169 grados centígrados; a nivel de puntos estratégicos y/o críticos. Durante la intervención no se identificó presencia de plagas; insectos rastreros, voladores o roedores. Los vectores son controlados debido a los buenos hábitos higiénicos, locativos y distribución de objetos. Contribuyendo a la eficacia del programa de Manejo Integrado de Plagas.
-                //       \nPara evitar una contaminación cruzada por favor realizar aseo profundo y desinfección al ambiente en áreas de producción antes de iniciar operaciones.'''
-                //       : visit.notes,
-                // ),
-                //coloredWidthBox(400),
               ],
             ),
           ); // Center
