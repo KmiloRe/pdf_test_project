@@ -34,7 +34,12 @@ MceVisit visita = const MceVisit(
   workerName: 'Jose Reyes',
   notes: 'Sin notas',
   controlledAreas: ['Área de carga', 'Cocina', 'Baños de hombre'],
-  infestationGrades: {'moscas': 40, 'cucarachas': 1, 'roedores': 2, 'otros': 3},
+  infestationGrades: {
+    'moscas': '40',
+    'cucarachas': '1',
+    'roedores': '2',
+    'otros': '3'
+  },
   chemicalsApplied: [
     {'matamax': 1},
     {'Quimico 2': 3}
@@ -79,190 +84,15 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-      //   centerTitle: true,
-      //   title: Text(widget.title),
-      // ),
       body: PdfPreview(
         build: (format) => _generatePdf(visita, client),
       ),
     );
   }
 
-  // pw.Text _getMinortitle(String x, pw.Font font) => pw.Text(
-  //       x,
-  //       textAlign: pw.TextAlign.left,
-  //       style: pw.TextStyle(
-  //         font: font,
-  //         fontSize: 12,
-  //         color: PdfColor.fromHex('53726A'),
-  //       ),
-  //     );
-
-  // pw.Widget _getTitle(String certifType, pw.Font font) => pw.Text(
-  //       '$certifType',
-  //       textAlign: pw.TextAlign.center,
-  //       style: pw.TextStyle(
-  //         font: font,
-  //         fontSize: 32,
-  //         color: PdfColor.fromHex('53726A'),
-  //       ),
-  //     );
-  // //
-  // pw.Widget _getCertificadotitle(String certifType, pw.Font font) => pw.Text(
-  //       'Certificado de $certifType',
-  //       textAlign: pw.TextAlign.center,
-  //       style: pw.TextStyle(
-  //         font: font,
-  //         fontSize: 32,
-  //         color: PdfColor.fromHex('53726A'),
-  //       ),
-  //     );
-
-  // pw.Text _getSubtitle(String text, pw.Font font) => pw.Text(
-  //       text,
-  //       textAlign: pw.TextAlign.center,
-  //       style: pw.TextStyle(
-  //         font: font,
-  //         fontSize: 22,
-  //         color: PdfColor.fromHex('53726A'),
-  //       ),
-  //     );
-
-  // pw.Text _getSmallBlackText(String text, pw.Font font) => pw.Text(
-  //       text,
-  //       style: pw.TextStyle(
-  //         font: font,
-  //         fontSize: 8,
-  //         color: PdfColors.black,
-  //       ),
-  //     );
-
-  // //Metodos quemados
-
-  // pw.SizedBox _getTableItemroedores(
-  //   String title,
-  //   pw.Font titleFont,
-  //   pw.Font contentFont,
-  // ) =>
-  //     pw.SizedBox(
-  //       width: 200,
-  //       child: pw.Row(
-  //         mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
-  //         crossAxisAlignment: pw.CrossAxisAlignment.center,
-  //         children: [
-  //           pw.Text(
-  //             title,
-  //             style: pw.TextStyle(
-  //               font: titleFont,
-  //               // fontWeight: FontWeight.bold,
-  //               fontSize: 10,
-  //               color: PdfColors.black,
-  //             ),
-  //           ),
-  //           pw.Text(
-  //             '     Sin evidencia:  0',
-  //             style: pw.TextStyle(
-  //               font: contentFont,
-  //               fontSize: 8,
-  //               color: PdfColors.grey,
-  //             ),
-  //           ),
-  //           pw.Text(
-  //             '     Bajo: 1 a 5',
-  //             style: pw.TextStyle(
-  //               font: contentFont,
-  //               fontSize: 8,
-  //               color: PdfColors.grey,
-  //             ),
-  //           ),
-  //           pw.Text(
-  //             '     Medio: 5 a 10 ',
-  //             style: pw.TextStyle(
-  //               font: contentFont,
-  //               fontSize: 8,
-  //               color: PdfColors.grey,
-  //             ),
-  //           ),
-  //           pw.Text(
-  //             '     Alto: 11 en adelante',
-  //             style: pw.TextStyle(
-  //               font: contentFont,
-  //               fontSize: 8,
-  //               color: PdfColors.grey,
-  //             ),
-  //           )
-  //         ],
-  //       ),
-  //     );
-
-  // pw.SizedBox _getQuimico(
-  //   String producto,
-  //   String docificacion,
-  //   pw.Font titleFont,
-  //   pw.Font contentFont,
-  // ) =>
-  //     pw.SizedBox(
-  //       width: 200,
-  //       child: pw.Row(
-  //         mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
-  //         crossAxisAlignment: pw.CrossAxisAlignment.center,
-  //         children: [
-  //           pw.Text(
-  //             producto,
-  //             style: pw.TextStyle(
-  //               font: titleFont,
-  //               fontSize: 10,
-  //               color: PdfColors.black,
-  //             ),
-  //           ),
-  //           pw.Text(
-  //             docificacion,
-  //             style: pw.TextStyle(
-  //               font: contentFont,
-  //               fontSize: 10,
-  //               color: PdfColors.black,
-  //             ),
-  //           )
-  //         ],
-  //       ),
-  //     );
-
-  // pw.SizedBox _getTableItem(
-  //   String title,
-  //   String content,
-  //   pw.Font titleFont,
-  //   pw.Font contentFont,
-  // ) =>
-  //     pw.SizedBox(
-  //       width: 200,
-  //       child: pw.Row(
-  //         mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
-  //         crossAxisAlignment: pw.CrossAxisAlignment.center,
-  //         children: [
-  //           pw.Text(
-  //             title,
-  //             style: pw.TextStyle(
-  //               font: titleFont,
-  //               fontSize: 12,
-  //               color: PdfColors.grey,
-  //             ),
-  //           ),
-  //           pw.Text(
-  //             content,
-  //             style: pw.TextStyle(
-  //               font: contentFont,
-  //               fontSize: 12,
-  //               color: PdfColors.grey,
-  //             ),
-  //           )
-  //         ],
-  //       ),
-  //     );
-
   Future<Uint8List> _generatePdf(MceVisit visit, MceUser client) async {
     pw.Widget image = await getImage();
+    pw.Widget imageconvencion = await getImageconvencion();
     final pdf = pw.Document();
     pdf.addPage(
       pw.Page(
@@ -304,7 +134,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         fontWeight: pw.FontWeight.bold,
                       ),
                     ),
-                    pw.SizedBox(width: 10),
+                    pw.SizedBox(height: 20),
                     pw.Text(
                       'Se realiza el control integrado de plagas en las instalaciones en general; inspección y verificación, bajo métodos de aplicación de insecticida líquido en Solución Concentrada S.C o Emulsión Concentrada E.C por aspersión, insecticida en gel por dosificación en gotas y vapor de agua a una temperatura de 135 a 169 grados centígrados; a nivel de puntos estratégicos y/o críticos. Durante la intervención no se identificó presencia de plagas; insectos rastreros, voladores o roedores. Los vectores son controlados debido a los buenos hábitos higiénicos, locativos y distribución de objetos. Contribuyendo a la eficacia del programa de Manejo Integrado de Plagas.',
                       overflow: pw.TextOverflow.clip,
@@ -323,15 +153,79 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ]),
                 ),
-
-                pw.SizedBox(width: 200),
+                pw.SizedBox(height: 20),
+                pw.Align(
+                  alignment: pw.Alignment.topLeft,
+                  child: pw.Wrap(alignment: pw.WrapAlignment.start, children: [
+                    pw.Text(
+                      "Convención de grados de infestación:",
+                      overflow: pw.TextOverflow.clip,
+                      textAlign: pw.TextAlign.justify,
+                      style: pw.TextStyle(
+                        fontSize: 10,
+                        fontWeight: pw.FontWeight.bold,
+                      ),
+                    ),
+                  ]),
+                ),
+                pw.Padding(
+                  padding: const pw.EdgeInsets.symmetric(vertical: 0),
+                  child: pw.Container(
+                    alignment: pw.Alignment.topLeft,
+                    width: double.infinity,
+                    child: imageconvencion,
+                  ),
+                ),
                 //coloredWidthBox(400),
+                pw.SizedBox(height: 10),
+                pw.Align(
+                  alignment: pw.Alignment.topLeft,
+                  child: pw.Wrap(alignment: pw.WrapAlignment.start, children: [
+                    pw.Text(
+                      "Grado de infestación identificado por el técnico en control integrado de plagas:",
+                      overflow: pw.TextOverflow.clip,
+                      textAlign: pw.TextAlign.justify,
+                      style: pw.TextStyle(
+                        fontSize: 10,
+                        fontWeight: pw.FontWeight.bold,
+                      ),
+                    ),
+                  ]),
+                ),
+                pw.SizedBox(height: 10),
+                pdfinfestationgradeTable(visit, client),
+                pw.Row(children: [
+                  pw.Text(
+                    "Cucaracha Alemana",
+                    textAlign: pw.TextAlign.justify,
+                    style: const pw.TextStyle(
+                      fontSize: 10,
+                    ),
+                  ),
+                ]),
               ],
             ),
           ); // Center
         },
       ),
     );
+
+    pdf.addPage(
+      pw.Page(
+        pageFormat: PdfPageFormat.letter,
+        margin: const pw.EdgeInsets.only(top: 10, left: 10, right: 10),
+        build: (pw.Context context) {
+          return pw.Center(
+            child: pw.Column(
+              children: [
+                pdfHeader(image, '12/11/2023'),
+              ],
+            ),
+          ); // Center
+        },
+      ),
+    );
+
     return pdf.save();
   }
 
