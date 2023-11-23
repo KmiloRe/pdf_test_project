@@ -280,7 +280,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   textField: 'Áreas controladas',
                   content: visit.controlledAreas.isEmpty
                       ? "Punto de venta, carnicería, fruver, cajas, bodega, shut de basuras, baños, lockers, cafetín y monitoreo."
-                      : visit.controlledAreas.join(" "),
+                      : visit.controlledAreas.join(", ") + ("."),
                 ),
                 pw.SizedBox(height: 10),
                 fullWidthTextRow(
@@ -289,6 +289,14 @@ class _MyHomePageState extends State<MyHomePage> {
                       ? '''Se realiza el control integrado de plagas en las instalaciones en general; inspección y verificación, bajo métodos de aplicación de insecticida líquido en Solución Concentrada S.C o Emulsión Concentrada E.C por aspersión, insecticida en gel por dosificación en gotas y vapor de agua a una temperatura de 135 a 169 grados centígrados; a nivel de puntos estratégicos y/o críticos. Durante la intervención no se identificó presencia de plagas; insectos rastreros, voladores o roedores. Los vectores son controlados debido a los buenos hábitos higiénicos, locativos y distribución de objetos. Contribuyendo a la eficacia del programa de Manejo Integrado de Plagas.
                       \nPara evitar una contaminación cruzada por favor realizar aseo profundo y desinfección al ambiente en áreas de producción antes de iniciar operaciones.'''
                       : visit.notes,
+                ),
+
+                pw.Text(
+                  'Se realiza el control integrado de plagas en las instalaciones en general; inspección y verificación, bajo métodos de aplicación de  productos químicos y no químicos, para el control de plagas, en las áreas de producción, almacenamiento, oficinas, baños, comedores, zonas verdes, etc.',
+                  style: const pw.TextStyle(
+                    fontSize: 10,
+                    color: PdfColors.grey700,
+                  ),
                 ),
                 //coloredWidthBox(400),
               ],

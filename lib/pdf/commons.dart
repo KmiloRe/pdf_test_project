@@ -116,7 +116,8 @@ pw.Widget coloredWidthBox(double widthSize) => pw.Container(
 
 pw.Widget fullWidthTextRow(
         {required String textField, required String content}) =>
-    pw.SizedBox(
+    pw.Align(
+      alignment: pw.Alignment.topLeft,
       child: pw.Wrap(
         alignment: pw.WrapAlignment.start,
         children: [

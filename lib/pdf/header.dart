@@ -12,7 +12,7 @@ pw.Widget pdfHeader(pw.Widget image, String date) => pw.Table(
               padding: const pw.EdgeInsets.symmetric(horizontal: 10),
               child: pw.Container(
                 alignment: pw.Alignment.center,
-                width: 45,
+                width: 30,
                 child: image,
               ),
             ),
@@ -20,7 +20,7 @@ pw.Widget pdfHeader(pw.Widget image, String date) => pw.Table(
               width: 260,
               child: pw.Center(
                 child: pw.Text(
-                  'Certificado M.I.P\nMundo Control Expertos',
+                  'CERTIFICADO M.I.P\nMUNDO CONTROL EXPERTOS',
                   style: pw.TextStyle(
                     fontSize: 18,
                     fontWeight: pw.FontWeight.normal,
@@ -36,7 +36,7 @@ pw.Widget pdfHeader(pw.Widget image, String date) => pw.Table(
                 children: [
                   headerTextRow('Código: F - OP - 03'),
                   headerTextRow('Versión: 03'),
-                  headerTextRow('Fecha de emisión:\n$date'),
+                  headerTextRow('Fecha: 06/10/2021'),
                 ],
               ),
             ),
