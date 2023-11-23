@@ -29,6 +29,7 @@ flutter:
     - assets/
     - assets/images/MCElogo.png
     - assets/images/sgs.jpg
+    - assets/images/FirmaCarlos.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

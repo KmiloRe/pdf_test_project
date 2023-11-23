@@ -108,7 +108,9 @@ pw.Widget pdfdiplomaMiddlesection(
               bigHeaderContentTextRow(
                 // isPrimary: true,
                 textField: 'Áreas controladas',
-                content: visit.date.isEmpty ? 'Hoy' : visit.date,
+                content: visit.controlledAreas.isEmpty
+                    ? "Punto de venta, carnicería, fruver, cajas, bodega, shut de basuras, baños, lockers, cafetín y monitoreo."
+                    : visit.controlledAreas.join(", "),
               ),
             ],
           ),
@@ -133,14 +135,29 @@ pw.Widget pdfdiplomaFootersection(
         children: [
           pw.TableRow(
             children: [
-              diplomafullWidthTextRow(
-                textField: 'Áreas controladas',
-                content: visit.controlledAreas.isEmpty
-                    ? "Punto de venta, carnicería, fruver, cajas, bodega, shut de basuras, baños, lockers, cafetín y monitoreo."
-                    : visit.controlledAreas.join(", "),
+              diplomafooterTextRow(
+                textField: 'Fecha de emisión certificado:',
+                content: visit.date.isEmpty ? 'Hoy' : visit.date,
+              ),
+            ],
+          ),
+          pw.TableRow(
+            children: [
+              diplomafooterTextRow(
+                textField: 'Código',
+                content: 'F -OP -03v',
               ),
             ],
           ),
         ],
+      ),
+      pw.SizedBox(width: 400),
+      pw.Padding(
+        padding: const pw.EdgeInsets.symmetric(horizontal: 0),
+        child: pw.Container(
+          alignment: pw.Alignment.center,
+          width: 200,
+          child: image,
+        ),
       ),
     ]);
