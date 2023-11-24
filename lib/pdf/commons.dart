@@ -79,6 +79,35 @@ pw.Widget headerContentTextRow(
       ),
     );
 
+pw.Widget tableContentTextRow(
+  String textField,
+) =>
+    pw.SizedBox(
+      width: double.infinity,
+      height: 30,
+      child: pw.Row(
+        mainAxisAlignment: pw.MainAxisAlignment.center,
+        children: [
+          pw.ConstrainedBox(
+            constraints: const pw.BoxConstraints(
+              maxWidth: double.infinity,
+            ),
+            child: pw.Text(
+              textField,
+              overflow: pw.TextOverflow.clip,
+              textAlign: pw.TextAlign.start,
+              style: const pw.TextStyle(
+                fontSize: 9,
+              ),
+            ),
+          ),
+          pw.SizedBox(
+            width: 5,
+          ),
+        ],
+      ),
+    );
+
 pw.Widget allblackNowidthlimitContentTextRow({
   required String textField,
   required String content,

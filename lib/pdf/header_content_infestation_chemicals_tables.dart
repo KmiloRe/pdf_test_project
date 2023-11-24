@@ -327,6 +327,7 @@ pw.Widget pdfQuimicos(MceVisit visit) => pw.Table(
                 textField: 'Cliente',
                 content: '',
               ),
+              tableContentTextRow('ds'),
               headerContentTextRow(
                 textField: 'Sede',
                 content: '',

@@ -92,7 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<Uint8List> _generatePdf(MceVisit visit, MceUser client) async {
     pw.Widget image = await getImage();
-    pw.Widget imageconvencion = await getImageconvencion();
+    pw.Widget imagefirma = await getImagesfirma();
     //? pw.Footer();
     final pdf = pw.Document();
     pdf.addPage(
@@ -230,6 +230,51 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 pw.SizedBox(height: 20),
                 pdfQuimicos(visit),
+                pw.SizedBox(height: 20),
+                pw.Align(
+                  alignment: pw.Alignment.topLeft,
+                  child: pw.Wrap(alignment: pw.WrapAlignment.start, children: [
+                    pw.Text(
+                      "Recomendaciones higiénicas generales:",
+                      overflow: pw.TextOverflow.clip,
+                      textAlign: pw.TextAlign.justify,
+                      style: pw.TextStyle(
+                        fontSize: 10,
+                        fontWeight: pw.FontWeight.bold,
+                      ),
+                    ),
+                  ]),
+                ),
+                pw.SizedBox(height: 20),
+                pw.Align(
+                  alignment: pw.Alignment.topLeft,
+                  child: pw.Wrap(alignment: pw.WrapAlignment.start, children: [
+                    pw.Text(
+                      "Recomendaciones locativas generales:",
+                      overflow: pw.TextOverflow.clip,
+                      textAlign: pw.TextAlign.justify,
+                      style: pw.TextStyle(
+                        fontSize: 10,
+                        fontWeight: pw.FontWeight.bold,
+                      ),
+                    ),
+                  ]),
+                ),
+                pw.SizedBox(height: 20),
+                pw.Align(
+                  alignment: pw.Alignment.topLeft,
+                  child: pw.Wrap(alignment: pw.WrapAlignment.start, children: [
+                    pw.Text(
+                      "Recomendaciones sugeridas por el tecnico en control integrado de plagas:",
+                      overflow: pw.TextOverflow.clip,
+                      textAlign: pw.TextAlign.justify,
+                      style: pw.TextStyle(
+                        fontSize: 10,
+                        fontWeight: pw.FontWeight.bold,
+                      ),
+                    ),
+                  ]),
+                ),
               ],
             ),
           ); // Center
@@ -237,6 +282,82 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
 
+    pdf.addPage(
+      pw.Page(
+        pageFormat: PdfPageFormat.letter,
+        margin: const pw.EdgeInsets.only(top: 10, left: 10, right: 10),
+        build: (pw.Context context) {
+          return pw.Center(
+            child: pw.Column(
+              children: [
+                pw.SizedBox(height: 20),
+                pw.Align(
+                  alignment: pw.Alignment.topLeft,
+                  child: pw.Wrap(alignment: pw.WrapAlignment.start, children: [
+                    pw.Text(
+                      "Productos / Químicos aplicados:",
+                      overflow: pw.TextOverflow.clip,
+                      textAlign: pw.TextAlign.justify,
+                      style: pw.TextStyle(
+                        fontSize: 10,
+                        fontWeight: pw.FontWeight.bold,
+                      ),
+                    ),
+                  ]),
+                ),
+                pw.SizedBox(height: 20),
+                pdfQuimicos(visit),
+                pw.SizedBox(height: 20),
+                pw.Align(
+                  alignment: pw.Alignment.topLeft,
+                  child: pw.Wrap(alignment: pw.WrapAlignment.start, children: [
+                    pw.Text(
+                      "Recomendaciones higiénicas generales:",
+                      overflow: pw.TextOverflow.clip,
+                      textAlign: pw.TextAlign.justify,
+                      style: pw.TextStyle(
+                        fontSize: 10,
+                        fontWeight: pw.FontWeight.bold,
+                      ),
+                    ),
+                  ]),
+                ),
+                pw.SizedBox(height: 20),
+                pw.Align(
+                  alignment: pw.Alignment.topLeft,
+                  child: pw.Wrap(alignment: pw.WrapAlignment.start, children: [
+                    pw.Text(
+                      "Recomendaciones locativas generales:",
+                      overflow: pw.TextOverflow.clip,
+                      textAlign: pw.TextAlign.justify,
+                      style: pw.TextStyle(
+                        fontSize: 10,
+                        fontWeight: pw.FontWeight.bold,
+                      ),
+                    ),
+                  ]),
+                ),
+                pw.SizedBox(height: 20),
+                pw.Align(
+                  alignment: pw.Alignment.topLeft,
+                  child: pw.Wrap(alignment: pw.WrapAlignment.start, children: [
+                    pw.Text(
+                      "Recomendaciones sugeridas por el tecnico en control integrado de plagas:",
+                      overflow: pw.TextOverflow.clip,
+                      textAlign: pw.TextAlign.justify,
+                      style: pw.TextStyle(
+                        fontSize: 10,
+                        fontWeight: pw.FontWeight.bold,
+                      ),
+                    ),
+                  ]),
+                ),
+              ],
+            ),
+          ); // Center
+        },
+      ),
+    );
     // footer: (pw.Context context) {
     //     return pw.Container(
     //         alignment: pw.Alignment.centerRight,

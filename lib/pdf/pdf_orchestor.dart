@@ -21,14 +21,6 @@ Future<pw.Widget> getImagesfirma() async {
   return image1;
 }
 
-Future<pw.Widget> getImageconvencion() async {
-  final img =
-      await rootBundle.load('assets/images/convencionesinfestacion.png');
-  final imageBytes = img.buffer.asUint8List();
-  pw.Image image1 = pw.Image(pw.MemoryImage(imageBytes));
-  return image1;
-}
-
 // Future<void> generatePdf(
 //     {required MceVisit visit, required MceUser client}) async {
 //   pw.Widget image = await getImage();
