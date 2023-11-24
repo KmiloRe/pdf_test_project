@@ -357,3 +357,52 @@ pw.Widget pdfQuimicos(MceVisit visit) => pw.Table(
         ),
       ],
     );
+
+pw.Widget pdflistRecomendaciones(MceVisit visit) => pw.Column(
+      children: [
+        pw.Align(
+          alignment: pw.Alignment.topLeft,
+          child: pw.Wrap(alignment: pw.WrapAlignment.start, children: [
+            pw.Text(
+              "Recomendaciones higiénicas generales:",
+              overflow: pw.TextOverflow.clip,
+              textAlign: pw.TextAlign.justify,
+              style: pw.TextStyle(
+                fontSize: 10,
+                fontWeight: pw.FontWeight.bold,
+              ),
+            ),
+          ]),
+        ),
+        pw.SizedBox(height: 20),
+        pw.Align(
+          alignment: pw.Alignment.topLeft,
+          child: pw.Wrap(alignment: pw.WrapAlignment.start, children: [
+            pw.Text(
+              "Recomendaciones locativas generales:",
+              overflow: pw.TextOverflow.clip,
+              textAlign: pw.TextAlign.justify,
+              style: pw.TextStyle(
+                fontSize: 10,
+                fontWeight: pw.FontWeight.bold,
+              ),
+            ),
+          ]),
+        ),
+        pw.SizedBox(height: 20),
+        pw.Align(
+          alignment: pw.Alignment.topLeft,
+          child: pw.Wrap(alignment: pw.WrapAlignment.start, children: [
+            pw.Text(
+              "Recomendaciones sugeridas por el tecnico en control integrado de plagas:",
+              overflow: pw.TextOverflow.clip,
+              textAlign: pw.TextAlign.justify,
+              style: pw.TextStyle(
+                fontSize: 10,
+                fontWeight: pw.FontWeight.bold,
+              ),
+            ),
+          ]),
+        ),
+      ],
+    );
