@@ -229,7 +229,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ]),
                 ),
                 pw.SizedBox(height: 20),
-                pdfinfestacion(),
+                pdfQuimicos(visit),
               ],
             ),
           ); // Center
