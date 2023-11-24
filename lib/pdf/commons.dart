@@ -18,6 +18,23 @@ pw.TableRow headerTextRow(String text) => pw.TableRow(
       ],
     );
 
+pw.TableRow subtextTextRow(String text) => pw.TableRow(
+      children: [
+        pw.SizedBox(
+          height: 30,
+          child: pw.Center(
+            child: pw.Text(
+              text,
+              textAlign: pw.TextAlign.center,
+              style: const pw.TextStyle(
+                fontSize: 9,
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+
 pw.Widget headerContentTextRow(
         {required String textField,
         required String content,

@@ -93,6 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<Uint8List> _generatePdf(MceVisit visit, MceUser client) async {
     pw.Widget image = await getImage();
     pw.Widget imageconvencion = await getImageconvencion();
+    //? pw.Footer();
     final pdf = pw.Document();
     pdf.addPage(
       pw.Page(
@@ -168,14 +169,16 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ]),
                 ),
-                pw.Padding(
-                  padding: const pw.EdgeInsets.symmetric(vertical: 0),
-                  child: pw.Container(
-                    alignment: pw.Alignment.topLeft,
-                    width: double.infinity,
-                    child: imageconvencion,
-                  ),
-                ),
+                pw.SizedBox(height: 20),
+                pdfinfestacion(),
+                // pw.Padding(
+                //   padding: const pw.EdgeInsets.symmetric(vertical: 0),
+                //   child: pw.Container(
+                //     alignment: pw.Alignment.topLeft,
+                //     width: double.infinity,
+                //     child: imageconvencion,
+                //   ),
+                // ),
                 //coloredWidthBox(400),
                 pw.SizedBox(height: 10),
                 pw.Align(
@@ -210,13 +213,40 @@ class _MyHomePageState extends State<MyHomePage> {
           return pw.Center(
             child: pw.Column(
               children: [
-                pdfHeader(image, '12/11/2023'),
+                pw.SizedBox(height: 20),
+                pw.Align(
+                  alignment: pw.Alignment.topLeft,
+                  child: pw.Wrap(alignment: pw.WrapAlignment.start, children: [
+                    pw.Text(
+                      "Productos / Químicos aplicados:",
+                      overflow: pw.TextOverflow.clip,
+                      textAlign: pw.TextAlign.justify,
+                      style: pw.TextStyle(
+                        fontSize: 10,
+                        fontWeight: pw.FontWeight.bold,
+                      ),
+                    ),
+                  ]),
+                ),
+                pw.SizedBox(height: 20),
+                pdfinfestacion(),
               ],
             ),
           ); // Center
         },
       ),
     );
+
+    // footer: (pw.Context context) {
+    //     return pw.Container(
+    //         alignment: pw.Alignment.centerRight,
+    //         margin: const pw.EdgeInsets.only(top: 1.0 * PdfPageFormat.cm),
+    //         child: pw.Text(
+    //             'Page ${context.pageNumber} of ${context.pagesCount}',
+    //             style: pw.Theme.of(context)
+    //                 .defaultTextStyle
+    //                 .copyWith(color: PdfColors.grey)));
+    //   };
 
     return pdf.save();
   }

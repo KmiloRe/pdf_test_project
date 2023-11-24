@@ -190,3 +190,149 @@ pw.Widget pdfinfestationgradeTable(MceVisit visit, MceUser client) {
     ],
   );
 }
+
+pw.Widget pdfinfestacion() => pw.Table(
+      defaultVerticalAlignment: pw.TableCellVerticalAlignment.middle,
+      border: pw.TableBorder.all(
+        width: 0.5,
+      ),
+      children: [
+        pw.TableRow(
+          children: [
+            pw.Center(
+              child: pw.Table(
+                defaultVerticalAlignment: pw.TableCellVerticalAlignment.middle,
+                border: pw.TableBorder.all(),
+                children: [
+                  headerTextRow('Tipo de vector'),
+                  subtextTextRow('Insectos rastreros'),
+                  subtextTextRow('Insectos voladores'),
+                  subtextTextRow('Roedores'),
+                ],
+              ),
+            ),
+            pw.Center(
+              child: pw.Table(
+                defaultVerticalAlignment: pw.TableCellVerticalAlignment.middle,
+                border: pw.TableBorder.all(),
+                children: [
+                  headerTextRow('Sin evidencia'),
+                  subtextTextRow('0'),
+                  subtextTextRow('0'),
+                  subtextTextRow('0'),
+                ],
+              ),
+            ),
+            pw.Center(
+              child: pw.Table(
+                defaultVerticalAlignment: pw.TableCellVerticalAlignment.middle,
+                border: pw.TableBorder.all(),
+                children: [
+                  headerTextRow('Bajo'),
+                  subtextTextRow('Insectos rastreros'),
+                  subtextTextRow('Insectos voladores'),
+                  subtextTextRow('Roedores'),
+                ],
+              ),
+            ),
+            pw.Center(
+              child: pw.Table(
+                defaultVerticalAlignment: pw.TableCellVerticalAlignment.middle,
+                border: pw.TableBorder.all(),
+                children: [
+                  headerTextRow('Medio'),
+                  subtextTextRow('Entre 51 y 100'),
+                  subtextTextRow('Entre 101 y 300'),
+                  subtextTextRow('Entre 2 y 4'),
+                ],
+              ),
+            ),
+            pw.Center(
+              child: pw.Table(
+                defaultVerticalAlignment: pw.TableCellVerticalAlignment.middle,
+                border: pw.TableBorder.all(),
+                children: [
+                  headerTextRow('Alto'),
+                  subtextTextRow('101 en adelante'),
+                  subtextTextRow('301 en adelante'),
+                  subtextTextRow('5 en adelante'),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+
+pw.Widget pdfQuimicos(MceVisit visit, MceUser client) => pw.Table(
+      defaultVerticalAlignment: pw.TableCellVerticalAlignment.middle,
+      border: pw.TableBorder.all(
+        width: 0.5,
+      ),
+      children: [
+        pw.TableRow(
+          children: [
+            pw.Center(
+              child: pw.Table(
+                defaultVerticalAlignment: pw.TableCellVerticalAlignment.middle,
+                border: pw.TableBorder.all(),
+                children: [
+                  headerTextRow('Tipo de vector'),
+                  subtextTextRow('Insectos rastreros'),
+                  subtextTextRow('Insectos voladores'),
+                  subtextTextRow('Roedores'),
+                ],
+              ),
+            ),
+            pw.Center(
+              child: pw.Table(
+                defaultVerticalAlignment: pw.TableCellVerticalAlignment.middle,
+                border: pw.TableBorder.all(),
+                children: [
+                  headerTextRow('Sin evidencia'),
+                  subtextTextRow('0'),
+                  subtextTextRow('0'),
+                  subtextTextRow('0'),
+                ],
+              ),
+            ),
+            pw.Center(
+              child: pw.Table(
+                defaultVerticalAlignment: pw.TableCellVerticalAlignment.middle,
+                border: pw.TableBorder.all(),
+                children: [
+                  headerTextRow('Bajo'),
+                  subtextTextRow('Insectos rastreros'),
+                  subtextTextRow('Insectos voladores'),
+                  subtextTextRow('Roedores'),
+                ],
+              ),
+            ),
+            pw.Center(
+              child: pw.Table(
+                defaultVerticalAlignment: pw.TableCellVerticalAlignment.middle,
+                border: pw.TableBorder.all(),
+                children: [
+                  headerTextRow('Medio'),
+                  subtextTextRow('Entre 51 y 100'),
+                  subtextTextRow('Entre 101 y 300'),
+                  subtextTextRow('Entre 2 y 4'),
+                ],
+              ),
+            ),
+            pw.Center(
+              child: pw.Table(
+                defaultVerticalAlignment: pw.TableCellVerticalAlignment.middle,
+                border: pw.TableBorder.all(),
+                children: [
+                  headerTextRow('Alto'),
+                  subtextTextRow('101 en adelante'),
+                  subtextTextRow('301 en adelante'),
+                  subtextTextRow('5 en adelante'),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
