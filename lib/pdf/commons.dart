@@ -265,3 +265,40 @@ pw.Widget diplomafooterTextRow(
         ],
       ),
     );
+
+pw.Widget signaturefooter(
+        {required String textField, required String content}) =>
+    pw.Align(
+      alignment: pw.Alignment.topLeft,
+      child: pw.Column(
+        crossAxisAlignment: pw.CrossAxisAlignment.start,
+        children: [
+          pw.Text(
+            "____________________________",
+            overflow: pw.TextOverflow.clip,
+            textAlign: pw.TextAlign.justify,
+            style: pw.TextStyle(
+              fontSize: 10,
+              fontWeight: pw.FontWeight.bold,
+            ),
+          ),
+          pw.Text(
+            "$textField:",
+            overflow: pw.TextOverflow.clip,
+            textAlign: pw.TextAlign.justify,
+            style: const pw.TextStyle(
+              fontSize: 10,
+            ),
+          ),
+          pw.Text(
+            content,
+            overflow: pw.TextOverflow.clip,
+            textAlign: pw.TextAlign.justify,
+            style: pw.TextStyle(
+              fontSize: 10,
+              fontWeight: pw.FontWeight.bold,
+            ),
+          ),
+        ],
+      ),
+    );
